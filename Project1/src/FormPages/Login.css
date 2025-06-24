@@ -1,0 +1,56 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  background-color: #e6ee9c;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+}
+
+.login-icon {
+  font-size: 60px !important;
+  color: #3f51b5;
+}
+
+.login-title {
+  margin-top: 20px;
+}
+
+.login-form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-textfield {
+  margin-top: 16px !important;
+  margin-left: 40px !important;
+  width: 80%;
+}
+
+.login-button {
+  margin-top: 16px !important;
+  margin-left: 40px !important;
+  width: 80%;
+}
+
+.login-link {
+  margin: 20px 0;
+  
+}
+
+.dialog-button {
+  margin-top: 16px;
+}
+
+.login-divider {
+  margin-top: 15px !important;
+}
+
+.login-signup-link {
+  margin-top: 12px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}

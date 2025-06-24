@@ -11,6 +11,8 @@ import {
   DialogActions
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
+import image1 from '../assets/image1.jpg'; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,24 +26,28 @@ const Home = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 10 }}>
-      <Box
-        sx={{
-          padding: 4,
-          borderRadius: 4,
-          backgroundColor: '#e6ee9c',
-          boxShadow: 3,
-          textAlign: 'center'
-        }}
-      >
-        <Typography variant="h2" gutterBottom>
+    <div
+          style={{
+            backgroundImage: `url(${image1})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+    <Container maxWidth="sm" className="home-container">
+      <Box className="home-box">
+        <Typography variant="h2" className="home-title" gutterBottom>
           QUESTK2 TECHNOLOGIES
         </Typography>
 
         <Button
           variant="contained"
           color="error"
-          sx={{ mt: 2 }}
+          className="home-logout-button"
           onClick={() => setOpenDialog(true)}
         >
           Logout
@@ -65,6 +71,7 @@ const Home = () => {
         </Dialog>
       </Box>
     </Container>
+    </div>
   );
 };
 

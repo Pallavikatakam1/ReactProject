@@ -8,6 +8,9 @@ import {
 } from '@mui/material';
 import { useStoreActions } from 'easy-peasy';
 import { useLocation, useNavigate } from 'react-router-dom';
+import './resetPassword.css';
+import image1 from '../assets/image1.jpg'; // Make sure the path is correct
+
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -39,17 +42,21 @@ const ResetPassword = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 10 }}>
-      <Box
-        sx={{
-          p: 4,
-          borderRadius: 4,
-          backgroundColor: '#e6ee9c',
-          boxShadow: 3,
-          textAlign: 'center'
-        }}
-      >
-        <Typography variant="h6" gutterBottom>
+    <div
+              style={{
+                backgroundImage: `url(${image1})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+    <Container maxWidth="sm" className="reset-container">
+      <Box className="reset-box">
+        <Typography variant="h6" className="reset-title" gutterBottom>
           Reset Your Password
         </Typography>
         <TextField
@@ -62,14 +69,14 @@ const ResetPassword = () => {
         />
         <Button
           variant="contained"
-          fullWidth
-          sx={{  mt: 4, ml: 3, width: '70%' }}
+          className="reset-button"
           onClick={handleReset}
         >
           Reset Password
         </Button>
       </Box>
     </Container>
+    </div>
   );
 };
 

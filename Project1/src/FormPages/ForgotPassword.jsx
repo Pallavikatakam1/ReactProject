@@ -7,13 +7,16 @@ import {
   Typography
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './ForgotPassword.css';
+import image1 from '../assets/image1.jpg'; // Make sure the path is correct
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleVerify = () => {
-    if (!email.trim()) {
+    if (!email) {
       alert('Please enter your email address.');
       return;
     }
@@ -32,17 +35,21 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 10 }}>
-      <Box
-        sx={{
-          padding: 4,
-          borderRadius: 4,
-          backgroundColor: '#e6ee9c',
-          boxShadow: 3,
-          textAlign: 'center'
-        }}
-      >
-        <Typography variant="h6" gutterBottom>
+    <div
+              style={{
+                backgroundImage: `url(${image1})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+    <Container maxWidth="sm" className="forgot-container">
+      <Box className="forgot-box">
+        <Typography variant="h6" className="forgot-title" gutterBottom>
           Forgot Password
         </Typography>
 
@@ -55,14 +62,14 @@ const ForgotPassword = () => {
         />
         <Button
           variant="contained"
-          fullWidth
-          sx={{  mt: 4, ml: 2, width: '70%' }}
+          className="forgot-button"
           onClick={handleVerify}
         >
           Verify Email
         </Button>
       </Box>
     </Container>
+    </div>
   );
 };
 
