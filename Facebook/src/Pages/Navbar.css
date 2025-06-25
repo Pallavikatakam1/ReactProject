@@ -1,0 +1,77 @@
+.app-bar {
+  background-color: #3b5998;
+  padding-block: 4px;
+  height: 100px;
+}
+
+.toolbar {
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: bold;
+  color: white;
+  flex-grow: 1;
+  margin-top: 2px;
+  margin-right: 1px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 1px;
+}
+
+.inputs-row {
+  display: flex;
+  gap: 16px;
+}
+
+.input-field {
+  background-color: white;
+  border-radius: 4px;
+  min-width: 10px;
+}
+
+.options-row {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.checkbox {
+  color: white;
+}
+.checkbox:hover{
+    cursor:click;
+    color: antiquewhite;
+}
+
+.checkbox-label {
+  color: white;
+  font-size: 12px;
+}
+
+.forgot-link {
+  color: white;
+  font-size: 12px;
+}
+
+.forgot-link:hover {
+  color: #f3f3f4;
+}
+
+.login-button {
+    background-color: #f3f3f3 !important;
+  color: black !important;
+
+  
+}
+
+.login-button:hover {
+  background-color: #7ea7c9 !important;
+  color: rgb(255, 253, 253);
+}

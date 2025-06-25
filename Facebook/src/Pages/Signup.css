@@ -1,0 +1,108 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.signup-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.signup-text-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  color: #000;
+}
+
+.signup-text-container h1 {
+  max-width: 400px;
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.signup-form-container {
+  width: 400px;
+  margin-right: 40px;
+  border-radius: 8px;
+  padding: 32px 24px;
+  align-self: center;
+}
+
+.signup-form {
+  width: 100%;
+}
+
+.signup-form h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.signup-form p {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.birthday-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.birthday-fields {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.caption {
+  font-size: 11px;
+  margin-left: 90px;
+  margin-top: -8px;
+  margin-bottom: 16px;
+  color: gray;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #42b72a;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #36a420;
+}
