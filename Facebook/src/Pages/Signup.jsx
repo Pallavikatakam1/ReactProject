@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './Signup.css';
-import facebook3 from '../Assets/facebook3.jpeg';
+import '../Pages/Signup.css';
+import { TextField } from '@mui/material';
+import facebook1 from '../Assets/facebook1.jpeg'; // Update path as needed
 
 const Signup = () => {
   const labelWidth = 90;
@@ -16,29 +17,38 @@ const Signup = () => {
     birthYear: '',
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    Object.entries(formData).forEach(([key, value]) => {
+      if (!value) {
+        newErrors[key] = `Enter ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`;
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
 
-    
-    if (!formData.email || !formData.password) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
-    
     localStorage.setItem('signupData', JSON.stringify(formData));
+    alert('Signup successful!');
 
-    alert('Signup successful! You can now log in.');
-
-    
     setFormData({
       firstName: '',
       lastName: '',
@@ -49,148 +59,165 @@ const Signup = () => {
       birthDay: '',
       birthYear: '',
     });
+    setErrors({});
   };
 
   return (
     <div
       className="signup-wrapper"
-      style={{
-        backgroundImage: `url(${facebook3})`,
-      }}
+      style={{ backgroundImage: `url(${facebook1})` }}
     >
-      
       <div className="signup-text-container">
-        <h1>Facebook helps you connect and share with the people in your life.</h1>
+        <p>
+          Facebook helps you connect and share with<br />
+          the people in your life.
+        </p>
       </div>
 
-      
       <div className="signup-form-container">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <h3>Sign Up</h3>
-          <p>It's free and anyone can join</p>
-
-        
-          <div className="form-row">
-            <label style={{ minWidth: labelWidth }}>First Name:</label>
-            <input
-              type="text"
-              name="firstName"
-              className="form-input"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
+          <div className=".signup-form-container h3">
+            <h3>Sign Up</h3>
+            <p>It's free and anyone can join</p>
           </div>
 
-          <div className="form-row">
-            <label style={{ minWidth: labelWidth }}>Last Name:</label>
-            <input
-              type="text"
-              name="lastName"
-              className="form-input"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-row">
-            <label style={{ minWidth: labelWidth }}>Your Email:</label>
-            <input
-              type="email"
-              name="email"
-              className="form-input"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-row">
-            <label style={{ minWidth: labelWidth }}>New Password:</label>
-            <input
-              type="password"
-              name="password"
-              className="form-input"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-        
-          <div className="form-row">
-            <label style={{ minWidth: labelWidth }}>I am:</label>
-            <select
-              name="gender"
-              className="form-input"
-              value={formData.gender}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Sex</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          
-          <div className="form-row birthday-group">
-            <label style={{ minWidth: labelWidth }}>Birthday:</label>
-            <div className="birthday-fields">
-              <select
-                name="birthMonth"
-                className="form-input"
-                value={formData.birthMonth}
+          <div className="form">
+            {/* First Name */}
+            <div className="form-row">
+              <label style={{ minWidth: labelWidth }}>First Name:</label>
+              <input
+                type="text"
+                name="firstName"
+                className={`form-input ${errors.firstName ? 'error-border' : ''}`}
+                value={formData.firstName}
                 onChange={handleChange}
-                required
-              >
-                <option value="">Month</option>
-                {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(
-                  (month, i) => (
-                    <option key={i} value={month}>{month}</option>
-                  )
-                )}
-              </select>
-
-              <select
-                name="birthDay"
-                className="form-input"
-                value={formData.birthDay}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Day</option>
-                {[...Array(31)].map((_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
-                ))}
-              </select>
-
-              <select
-                name="birthYear"
-                className="form-input"
-                value={formData.birthYear}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Year</option>
-                {[...Array(100)].map((_, i) => {
-                  const year = new Date().getFullYear() - i;
-                  return (
-                    <option key={year} value={year}>{year}</option>
-                  );
-                })}
-              </select>
+              />
+              {errors.firstName && <div className="error-text">{errors.firstName}</div>}
             </div>
-          </div>
 
-          <p className="caption">Why do I need to provide this?</p>
+            {/* Last Name */}
+            <div className="form-row">
+              <label style={{ minWidth: labelWidth }}>Last Name:</label>
+              <input
+                type="text"
+                name="lastName"
+                className={`form-input ${errors.lastName ? 'error-border' : ''}`}
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+              {errors.lastName && <div className="error-text">{errors.lastName}</div>}
+            </div>
+
+            {/* Email */}
+            <div className="form-row">
+              <label style={{ minWidth: labelWidth }}>Email:</label>
+              <input
+                type="email"
+                name="email"
+                className={`form-input ${errors.email ? 'error-border' : ''}`}
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {errors.email && <div className="error-text">{errors.email}</div>}
+            </div>
+
+            {/* Password */}
+            <div className="form-row">
+              <label style={{ minWidth: labelWidth }}>Password:</label>
+              <input
+                type="password"
+                name="password"
+                className={`form-input ${errors.password ? 'error-border' : ''}`}
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {errors.password && <div className="error-text">{errors.password}</div>}
+            </div>
+
+            {/* Gender */}
+            <div className="form-row">
+              <label style={{ minWidth: labelWidth }}>Gender:</label>
+              <select
+                name="gender"
+                className={`form-input ${errors.gender ? 'error-border' : ''}`}
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="">Select</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+              </select>
+              {errors.gender && <div className="error-text">{errors.gender}</div>}
+            </div>
+
+            {/* Birthday */}
+            <div className="form-row birthday-group">
+              <label style={{ minWidth: labelWidth }}>Birthday:</label>
+              <div className="birthday-fields">
+                <select
+                  name="birthMonth"
+                  className={`form-input ${errors.birthMonth ? 'error-border' : ''}`}
+                  value={formData.birthMonth}
+                  onChange={handleChange}
+                >
+                  <option value="">Month</option>
+                  {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(
+                    (month, i) => (
+                      <option key={i} value={month}>
+                        {month}
+                      </option>
+                    )
+                  )}
+                </select>
+                <select
+                  name="birthDay"
+                  className={`form-input ${errors.birthDay ? 'error-border' : ''}`}
+                  value={formData.birthDay}
+                  onChange={handleChange}
+                >
+                  <option value="">Day</option>
+                  {[...Array(31)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  name="birthYear"
+                  className={`form-input ${errors.birthYear ? 'error-border' : ''}`}
+                  value={formData.birthYear}
+                  onChange={handleChange}
+                >
+                  <option value="">Year</option>
+                  {[...Array(100)].map((_, i) => {
+                    const year = new Date().getFullYear() - i;
+                    return (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              {(errors.birthMonth || errors.birthDay || errors.birthYear) && (
+                <div className="error-text">Please complete your birthday</div>
+              )}
+            </div>
+
+            <div className="caption">Why do I need to provide this?</div>
+          </div>
 
           <div style={{ textAlign: 'center' }}>
             <button type="submit" className="submit-button">
-              Sign Up
+              SignUp
             </button>
+            <div>
+              <hr style={{ border: 'none', borderTop: '2px solid #ccc', margin: '10px auto', width: '120%' }} />
+              <p1 style={{ fontSize: '14px', color: '#3B5998' }}>
+                Create a Page for a celebrity, band or business.
+              </p1>
+            </div>
           </div>
         </form>
       </div>

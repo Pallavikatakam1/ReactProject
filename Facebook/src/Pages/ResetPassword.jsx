@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './resetPassword.css';
-import facebook3 from '../assets/facebook3.jpeg';
+import facebook1 from '../assets/facebook1.jpeg';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -40,7 +40,7 @@ const ResetPassword = () => {
      <div
        className="reset-wrapper"
        style={{
-       backgroundImage: `url(${facebook3})`
+       backgroundImage: `url(${facebook1})`
        }}
      >
       <Container maxWidth="sm" className="reset-container">

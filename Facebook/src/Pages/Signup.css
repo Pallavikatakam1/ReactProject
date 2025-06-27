@@ -1,66 +1,102 @@
-body, html {
-  width: 100%;
-  height: 100%;
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: cover;
+  color: #3B5998;
 }
 
 .signup-wrapper {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  flex-direction: row;
+  width: 2000px;
+  height:100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  margin: 0; /* remove margin to avoid scroll */
+  padding: 0;
+}
+.fbtext{
+  margin-top: -1000px;
 }
 
 .signup-text-container {
-  flex: 1;
+  
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-  color: #000;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 40px;
+  color: #3B5998;
+  height: 200px;
+  align-content: flex-right;
+  width: 800px;
+  margin-top: 30px;
 }
 
-.signup-text-container h1 {
-  max-width: 400px;
-  font-size: 24px;
+.signup-text-container p {
+
+  width: 3000px;
+  font-size: 30px;
+  font-weight: bold;
+  color:#3B5998;
   line-height: 1.4;
+  text-align: start;
+  white-space: pre-line;
+
 }
 
 .signup-form-container {
   width: 400px;
-  margin-right: 40px;
+  padding: 34px;
   border-radius: 8px;
-  padding: 32px 24px;
   align-self: center;
+  margin-right: 100px;
+  
+
 }
 
-.signup-form {
-  width: 100%;
-}
+.signup-form-container h3{
+  text-align: left;
+  font-size: 27px;
+  margin-bottom: 0 !important;
+  align-self: start;
+  color: #3B5998;
 
-.signup-form h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 4px;
+}
+.signup-form-container p{
+  font-size: 26px !important;
+  margin-bottom: 2px;
+  text-align: left;
+  margin-top: 0;
+  color: #3B5998;
 }
 
 .signup-form p {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 12px;
-  color: #000;
+  color: #3B5998;
+}
+
+.form{
+  align-items: right;
+  margin-right: 0px;
+  justify-items: right;
 }
 
 .form-row {
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  align-items: flex-end;
+  margin-bottom: 10px;
   gap: 8px;
+  text-align: right;
+  -ms-flex-align: end;
+  width: 300px;
+  
 }
 
 .form-input {
@@ -68,41 +104,66 @@ body, html {
   padding: 6px 8px;
   font-size: 13px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  
 }
 
 .birthday-group {
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
 .birthday-fields {
   display: flex;
-  gap: 6px;
-  width: 100%;
-  margin-top: 4px;
+  gap:4px;
+  flex: 0;
 }
 
 .caption {
-  font-size: 11px;
-  margin-left: 90px;
-  margin-top: -8px;
+  font-size: 12px;
+  margin-top: 0;
   margin-bottom: 16px;
-  color: gray;
+  color:#3B5998;
+  margin-right: 20px;
 }
 
 .submit-button {
-  width: 100%;
-  background-color: #42b72a;
+  width: 20%;
+  background-color: #2a63b7;
   color: white;
   padding: 8px;
   font-size: 14px;
   border: none;
   border-radius: 4px;
-  text-transform: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 70px;
+  
 }
 
 .submit-button:hover {
-  background-color: #36a420;
+  background-color: #2036a4;
 }
+
+.p1{
+  margin-right: 50px;
+}
+
+.error-border {
+  border: 1.5px solid red !important;
+}
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+
+
+
+
+
+

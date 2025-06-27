@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
-import facebook3 from '../assets/facebook3.jpeg';
+import facebook1 from '../assets/facebook1.jpeg';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Welcome = () => {
     <div
   className="welcome-wrapper"
   style={{
-    backgroundImage: `url(${facebook3})`,
+    backgroundImage: `url(${facebook1})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

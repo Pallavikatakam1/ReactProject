@@ -3,12 +3,11 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Box,
   TextField,
   Button,
   Checkbox,
-  FormControlLabel,
-  Link
+  Link,
+  FormControlLabel
 } from '@mui/material';
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +18,11 @@ const Navbar = () => {
     password: ''
   });
 
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false
+  });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,73 +31,86 @@ const Navbar = () => {
       ...prev,
       [name]: value
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: false
+    }));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const storedData = JSON.parse(localStorage.getItem('signupData'));
-    if (
-      storedData &&
-      storedData.email === loginData.email &&
-      storedData.password === loginData.password
-    ) {
-      alert('Login successful!');
-      navigate("/Welcome");
-    } else {
-      alert('Invalid email or password.');
-    }
+    const newErrors = {
+      email: loginData.email.trim() === '',
+      password: loginData.password.trim() === ''
+    };
+    setErrors(newErrors);
+
+    if (newErrors.email || newErrors.password) return;
+
+    navigate('/Welcome');
   };
 
   return (
     <AppBar position="fixed" className="app-bar">
       <Toolbar className="toolbar">
-
         <Typography variant="h2" fontWeight="bold">
           facebook
         </Typography>
 
-        
-        <Box component="form" className="login-form" onSubmit={handleLogin}>
-          <Box className="inputs-row">
-            <TextField
-              label="Email"
-              name="email"
-              variant="filled"
-              size="small"
-              InputProps={{ disableUnderline: true }}
-              className="input-field"
-              value={loginData.email}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Password"
-              name="password"
-              type="password"
-              variant="filled"
-              size="small"
-              InputProps={{ disableUnderline: true }}
-              className="input-field"
-              value={loginData.password}
-              onChange={handleChange}
-              required
-            />
-          </Box>
+        <form onSubmit={handleLogin}>
+          <div className="email">
+            {/* Email stack */}
+            <div className="input-stack">
+              <FormControlLabel
+                control={<Checkbox size="small" className="checkbox" />}
+                label={
+                  <Typography className="checkbox-label">Remember Me</Typography>
+                }
+              />
+              <TextField
+                placeholder="Email"
+                name="email"
+                type='email'
+                variant="outlined"
+                color='white'
+                size="medium"
+                value={loginData.email}
+                onChange={handleChange}
+                error={errors.email}
+                helperText={errors.email ? 'Enter email' : ''}
+                InputProps={{ disableUnderline: true }}
+                className="input-field"
+              />
+            </div>
 
-          <Box className="options-row">
-            <FormControlLabel
-              control={<Checkbox size="small" className="checkbox" />}
-              label={<Typography className="checkbox-label">Remember Me</Typography>}
-            />
-            <Link
-              underline="hover"
-              className="forgot-link"
-              onClick={() => navigate('/ForgotPassword')}
-              style={{ cursor: 'pointer' ,color:'white' }}
-            >
-              Forgot password?
-            </Link>
+           
+            <div className="input-stack">
+              <Link
+                underline="hover"
+                className="forgot-link"
+                onClick={() => navigate('/ForgotPassword')}
+              >
+                Forgot password?
+              </Link>
+              <TextField
+                placeholder="Password"
+                name="password"
+                type="password"
+                variant="outlined"
+                color='white'
+                size="medium"
+                value={loginData.password}
+                onChange={handleChange}
+                error={errors.password}
+                helperText={errors.password ? 'Enter password' : ''}
+                InputProps={{ disableUnderline: true }}
+                className="input-field"
+              />
+            </div>
+
+            
             <Button
               variant="contained"
               size="small"
@@ -102,8 +119,8 @@ const Navbar = () => {
             >
               Log In
             </Button>
-          </Box>
-        </Box>
+          </div>
+        </form>
       </Toolbar>
     </AppBar>
   );

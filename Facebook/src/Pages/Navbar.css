@@ -1,77 +1,86 @@
 .app-bar {
   background-color: #3b5998;
-  padding-block: 4px;
-  height: 100px;
+  box-shadow: none;
+  padding: 15px 20px;
 }
 
 .toolbar {
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-.logo {
-  font-weight: bold;
-  color: white;
-  flex-grow: 1;
-  margin-top: 2px;
-  margin-right: 1px;
+.email {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-left: auto; 
 }
 
-.login-form {
+.input-stack {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-top: 1px;
+  gap: 4px;
+  align-items: flex-end;
+  align-self: flex-end;
 }
 
-.inputs-row {
-  display: flex;
-  gap: 16px;
+
+.checkbox-label {
+  color: white;
+  font-size: 14px;
+  bottom: 10px;
+  align-self: flex-right;
+}
+
+.checkbox-label-onClick{
+  color: white;
+}
+
+.forgot-link {
+  font-size: 14px;
+  color: rgb(255, 255, 255) !important;
+  padding: 7px;
+  align-items: flex-end;
+
 }
 
 .input-field {
   background-color: white;
-  border-radius: 4px;
-  min-width: 10px;
-}
-
-.options-row {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-}
-
-.checkbox {
-  color: white;
-}
-.checkbox:hover{
-    cursor:click;
-    color: antiquewhite;
-}
-
-.checkbox-label {
-  color: white;
-  font-size: 12px;
-}
-
-.forgot-link {
-  color: white;
-  font-size: 12px;
-}
-
-.forgot-link:hover {
-  color: #f3f3f4;
-}
-
-.login-button {
-    background-color: #f3f3f3 !important;
-  color: black !important;
-
+  align-items: flex-end;
   
 }
 
-.login-button:hover {
-  background-color: #7ea7c9 !important;
-  color: rgb(255, 253, 253);
+.input-field input {
+  padding: 6px;
+  font-size: 13px;
+  align-items: center;
 }
+
+.MuiFormHelperText-root {
+  font-size: 12px;
+  color: red;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
+.login-button {
+  padding: 6px 16px;
+  font-weight: bold;
+  background-color: #1877f2;
+  color: white;
+  border-radius: 4px;
+  text-transform: none;
+}
+
+.login-button:hover {
+  background-color: #145dbf;
+}
+.options-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 1px;
+}
+
+

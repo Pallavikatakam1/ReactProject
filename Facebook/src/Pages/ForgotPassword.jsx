@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './ForgotPassword.css';
-import facebook3 from '../assets/facebook3.jpeg'; 
+import facebook1 from '../assets/facebook1.jpeg'; 
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +35,7 @@ const ForgotPassword = () => {
     <div
       className="forgot-wrapper"
       style={{
-        backgroundImage: `url(${facebook3})`
+        backgroundImage: `url(${facebook1})`
       }}
     >
       <Container maxWidth="sm" className="forgot-container">
