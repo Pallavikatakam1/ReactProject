@@ -4,7 +4,8 @@ import {
   Box,
   TextField,
   Button,
-  Typography
+  Typography,
+  Alert
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './resetPassword.css';
@@ -12,13 +13,31 @@ import facebook1 from '../assets/facebook1.jpeg';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordHelper, setPasswordHelper] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
 
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setNewPassword(value);
+
+    if (!value.trim()) {
+      setPasswordError(true);
+      setPasswordHelper('Please enter a new password');
+    } else {
+      setPasswordError(false);
+      setPasswordHelper('');
+    }
+  };
+
   const handleReset = () => {
     if (!newPassword.trim()) {
-      alert('Please enter a new password.');
+      setPasswordError(true);
+      setPasswordHelper('Please enter a new password');
       return;
     }
 
@@ -32,34 +51,59 @@ const ResetPassword = () => {
 
     localStorage.setItem('users', JSON.stringify(updatedUsers));
 
-    alert('Password reset successful!');
-    navigate('/'); 
+    setSuccessMsg('Password reset successful!');
+    setTimeout(() => {
+      navigate('/login');
+    }, 1200);
   };
 
   return (
-     <div
-       className="reset-wrapper"
-       style={{
-       backgroundImage: `url(${facebook1})`
-       }}
-     >
+    <div
+      className="reset-wrapper"
+      style={{
+        backgroundImage: `url(${facebook1})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
       <Container maxWidth="sm" className="reset-container">
         <Box className="reset-box">
           <Typography variant="h5" className="reset-title" gutterBottom>
             Reset Your Password
           </Typography>
+
+          {successMsg && (
+            <Alert severity="success" sx={{ mb: 2 }}>
+              {successMsg}
+            </Alert>
+          )}
+
+          {errorMsg && (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {errorMsg}
+            </Alert>
+          )}
+
           <TextField
             fullWidth
             label="New Password"
             type="password"
             margin="normal"
             value={newPassword}
-            onChange={e => setNewPassword(e.target.value)}
+            onChange={handlePasswordChange}
+            error={passwordError}
+            helperText={passwordHelper}
           />
           <Button
             variant="contained"
             className="reset-button"
             onClick={handleReset}
+            sx={{ mt: 2 }}
           >
             Reset Password
           </Button>
