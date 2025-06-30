@@ -5,15 +5,12 @@ import {
   Container,
   Typography,
   Alert,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogActions
+  Box
 } from '@mui/material';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useNavigate } from 'react-router-dom';
 import './signup.css';
-import image1 from '../assets/image1.jpg'; 
+import project2 from '../assets/project2.jpg';
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -22,8 +19,19 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [openDialog, setOpenDialog] = useState(false);
-  const [logoutAlert, setLogoutAlert] = useState(false);
+
+  // Validation states
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const [firstNameHelper, setFirstNameHelper] = useState('');
+  const [lastNameHelper, setLastNameHelper] = useState('');
+  const [phoneHelper, setPhoneHelper] = useState('');
+  const [emailHelper, setEmailHelper] = useState('');
+  const [passwordHelper, setPasswordHelper] = useState('');
 
   const addUser = useStoreActions((actions) => actions.addUser);
   const users = useStoreState((state) => state.users) || [];
@@ -31,6 +39,50 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
+
+    // Reset validation
+    setFirstNameError(false);
+    setLastNameError(false);
+    setPhoneError(false);
+    setEmailError(false);
+    setPasswordError(false);
+
+    setFirstNameHelper('');
+    setLastNameHelper('');
+    setPhoneHelper('');
+    setEmailHelper('');
+    setPasswordHelper('');
+    setError('');
+
+    let valid = true;
+
+    if (!firstName.trim()) {
+      setFirstNameError(true);
+      setFirstNameHelper('First name is required');
+      valid = false;
+    }
+    if (!lastName.trim()) {
+      setLastNameError(true);
+      setLastNameHelper('Last name is required');
+      valid = false;
+    }
+    if (!phone.trim()) {
+      setPhoneError(true);
+      setPhoneHelper('Phone number is required');
+      valid = false;
+    }
+    if (!email.trim()) {
+      setEmailError(true);
+      setEmailHelper('Email is required');
+      valid = false;
+    }
+    if (!password.trim()) {
+      setPasswordError(true);
+      setPasswordHelper('Password is required');
+      valid = false;
+    }
+
+    if (!valid) return;
 
     const alreadyExists = users.some(
       (user) => user.email.toLowerCase() === email.toLowerCase()
@@ -52,19 +104,10 @@ const Signup = () => {
     navigate('/Login');
   };
 
-  const confirmLogout = () => {
-    setOpenDialog(false);
-    setLogoutAlert(true);
-    setTimeout(() => {
-      setLogoutAlert(false);
-      navigate('/');
-    }, 500);
-  };
-
   return (
     <div
       style={{
-        backgroundImage: `url(${image1})`,
+        backgroundImage: `url(${project2})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -80,6 +123,12 @@ const Signup = () => {
             Signup
           </Typography>
 
+          {error && (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {error}
+            </Alert>
+          )}
+
           <form onSubmit={handleSignup}>
             <TextField
               fullWidth
@@ -87,7 +136,8 @@ const Signup = () => {
               label="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              required
+              error={firstNameError}
+              helperText={firstNameHelper}
             />
             <TextField
               fullWidth
@@ -95,7 +145,8 @@ const Signup = () => {
               label="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              required
+              error={lastNameError}
+              helperText={lastNameHelper}
             />
             <TextField
               fullWidth
@@ -103,7 +154,8 @@ const Signup = () => {
               label="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              required
+              error={phoneError}
+              helperText={phoneHelper}
             />
             <TextField
               fullWidth
@@ -111,7 +163,8 @@ const Signup = () => {
               label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              error={emailError}
+              helperText={emailHelper}
             />
             <TextField
               fullWidth
@@ -120,34 +173,23 @@ const Signup = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+              error={passwordError}
+              helperText={passwordHelper}
             />
 
-            <div className="signup-button-group">
-              <Button type="submit" variant="contained">
+            <Box className="signup-button-group" sx={{ mt: 2 }}>
+              <Button type="submit" variant="contained" sx={{ mr: 2 }}>
                 Register
               </Button>
-              <Button variant="contained" color="black" onClick={() => setOpenDialog(true)}>
+              <Button
+                variant="contained"
+                color="inherit"
+                onClick={() => navigate('/')}
+              >
                 Back
               </Button>
-            </div>
+            </Box>
           </form>
-
-          <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-            <DialogContent>
-              <DialogContentText>
-                Are you sure want to go back?
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setOpenDialog(false)} color="primary">
-                No
-              </Button>
-              <Button onClick={confirmLogout} color="error" autoFocus>
-                Yes
-              </Button>
-            </DialogActions>
-          </Dialog>
         </div>
       </Container>
     </div>

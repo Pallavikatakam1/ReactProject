@@ -8,27 +8,25 @@ import {
   Divider,
   Checkbox,
   Link,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Alert
+  Alert,
+  Box
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
-import image1 from '../assets/image1.jpg';
-
+import project2 from '../assets/project2.jpg';
+ 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [logoutAlert, setLogoutAlert] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [emailHelper, setEmailHelper] = useState('');
+  const [passwordHelper, setPasswordHelper] = useState('');
   const navigate = useNavigate();
-
-  // Load remembered credentials on mount
+ 
   useEffect(() => {
     const rememberedEmail = localStorage.getItem('rememberEmail');
     const rememberedPassword = localStorage.getItem('rememberPassword');
@@ -38,161 +36,284 @@ const Login = () => {
       setRememberMe(true);
     }
   }, []);
+ 
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
 
+    setEmail(value);
+ 
+    if (!value.trim()) {
+
+      setEmailError(true);
+
+      setEmailHelper('Please enter your email');
+
+    } else {
+
+      setEmailError(false);
+
+      setEmailHelper('');
+
+    }
+
+  };
+ 
+  const handlePasswordChange = (e) => {
+
+    const value = e.target.value;
+
+    setPassword(value);
+ 
+    if (!value.trim()) {
+
+      setPasswordError(true);
+
+      setPasswordHelper('Please enter your password');
+
+    } else {
+
+      setPasswordError(false);
+
+      setPasswordHelper('');
+
+    }
+
+  };
+ 
   const handleLogin = (e) => {
+
     e.preventDefault();
+
+    setErrorMsg('');
+
+    let isValid = true;
+ 
+    if (!email.trim()) {
+
+      setEmailError(true);
+
+      setEmailHelper('Please enter your email');
+
+      isValid = false;
+
+    }
+ 
+    if (!password.trim()) {
+
+      setPasswordError(true);
+
+      setPasswordHelper('Please enter your password');
+
+      isValid = false;
+
+    }
+ 
+    if (!isValid) return;
+ 
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     const userByEmail = storedUsers.find(
+
       user => user.email.toLowerCase() === email.toLowerCase()
+
     );
-
+ 
     if (!userByEmail) {
+
       setErrorMsg('Email does not exist.');
-      return;
-    }
 
+      return;
+
+    }
+ 
     if (userByEmail.password !== password) {
+
       setErrorMsg('Incorrect password.');
+
       return;
-    }
 
+    }
+ 
     localStorage.setItem('authUser', JSON.stringify(userByEmail));
-    setErrorMsg('');
-    alert('Login successful!');
     navigate('/Home');
-
+ 
     if (rememberMe) {
+
       localStorage.setItem('rememberEmail', email);
+
       localStorage.setItem('rememberPassword', password);
+
     } else {
+
       localStorage.removeItem('rememberEmail');
+
       localStorage.removeItem('rememberPassword');
+
     }
-  };
 
-  const confirmLogout = () => {
-    setOpenDialog(false);
-    localStorage.removeItem('authUser');
-    setLogoutAlert(true);
-    setTimeout(() => {
-      setLogoutAlert(false);
-      navigate('/');
-    }, 500);
   };
-
+ 
   return (
-    <div
+<div
+
       style={{
-        backgroundImage: `url(${image1})`,
+
+        backgroundImage: `url(${project2})`,
+
         backgroundSize: 'cover',
+
         backgroundPosition: 'center',
+
         backgroundRepeat: 'no-repeat',
+
         minHeight: '100vh',
+
         display: 'flex',
+
         alignItems: 'center',
+
         justifyContent: 'center'
+
       }}
-    >
-      <Container component="main" maxWidth="xs">
-        <div className="login-container">
-          <LockOutlinedIcon className="login-icon" />
-          <Typography component="h1" variant="h5" className="login-title">
+>
+<Container component="main" maxWidth="xs">
+<div className="login-container">
+<LockOutlinedIcon className="login-icon" />
+<Typography component="h1" variant="h5" className="login-title">
+
             Log In
-          </Typography>
-
+</Typography>
+ 
           {errorMsg && (
-            <Alert severity="error" sx={{ mt: 2, width: '100%' }}>
+<Alert severity="error" sx={{ mt: 2, width: '100%' }}>
+
               {errorMsg}
-            </Alert>
+</Alert>
+
           )}
-
+ 
           <form onSubmit={handleLogin} className="login-form">
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              className="login-textfield"
-              label="Email Address"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              className="login-textfield"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+<Box sx={{ mt: 2 }}>
+<TextField
+
+                fullWidth
+
+                variant="outlined"
+
+                label="Email Address"
+
+                autoComplete="email"
+
+                value={email}
+
+                onChange={handleEmailChange}
+
+                error={emailError}
+
+                helperText={emailHelper}
+
+              />
+</Box>
+ 
+            <Box sx={{ mt: 2 }}>
+<TextField
+
+                fullWidth
+
+                variant="outlined"
+
+                label="Password"
+
+                type="password"
+
+                autoComplete="current-password"
+
+                value={password}
+
+                onChange={handlePasswordChange}
+
+                error={passwordError}
+
+                helperText={passwordHelper}
+
+              />
+</Box>
+ 
             <FormControlLabel
+
+              sx={{ mt: 1 }}
+
               control={
-                <Checkbox
+<Checkbox
+
                   checked={rememberMe}
+
                   onChange={(e) => setRememberMe(e.target.checked)}
+
                   color="primary"
+
                 />
+
               }
+
               label="Remember me"
+
             />
-
+ 
             <Button
+
               fullWidth
+
               variant="text"
+
               onClick={() => navigate('/ForgotPassword')}
+
               style={{ marginTop: '10px', textTransform: 'none' }}
-            >
+>
+
               Forgot password?
-            </Button>
-
+</Button>
+ 
             <Button
+
               type="submit"
+
               variant="contained"
+
               color="success"
-              className="login-button"
-            >
+
+              sx={{ mt: 2, ml:17}}
+>
+
               Login
-            </Button>
+</Button>
+ 
+            <Divider sx={{ mt: 2 }} />
+<Link href="/Signup" variant="body2" sx={{ mt: 2, display: 'block', textAlign: 'center' }}>
 
-            <Divider className="login-divider" />
-            <Link href="/Signup" variant="body2" className="login-signup-link">
               {"Don't have an account? Sign Up"}
-            </Link>
-          </form>
-
+</Link>
+</form>
+ 
           <Button
+
             variant="contained"
-            color="black"
+
             sx={{ mt: 2 }}
-            onClick={() => setOpenDialog(true)}
-          >
+
+            onClick={() => navigate('/')}
+>
+
             Back
-          </Button>
+</Button>
+</div>
+</Container>
+</div>
 
-          <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-            <DialogContent>
-              <DialogContentText>
-                Are you sure you want to go back?
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setOpenDialog(false)} color="primary">
-                No
-              </Button>
-              <Button onClick={confirmLogout} color="error" autoFocus>
-                Yes
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </div>
-      </Container>
-    </div>
   );
-};
 
+};
+ 
 export default Login;
+
+ 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Box, Typography, Button} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
-import image1 from '../assets/image1.jpg'; 
+import project1 from '../assets/project1.webp'; 
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const Welcome = () => {
   return (
     <div
        style={{
-        backgroundImage: `url(${image1})`,
+        backgroundImage: `url(${project1})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -25,19 +25,20 @@ const Welcome = () => {
       <Box className="welcome-box"
         
       >
-        <Typography variant="h2" className="welcome-title" gutterBottom>
+        <Typography variant="h1" className="welcome-title" gutterBottom>
           WELCOME
         </Typography>
 
         <div className="welcome-button-group">
          <Button
+           variant='contained'
            className="welcome-button"
            onClick={() => navigate('/Login')}
          >
            Login
          </Button>
          <Button type="submit" 
-         
+           variant='contained'
            className="welcome-button" 
            onClick={() => navigate('/Signup')}
          >

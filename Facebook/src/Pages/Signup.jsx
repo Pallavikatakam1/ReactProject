@@ -35,7 +35,8 @@ const Signup = () => {
     const newErrors = {};
     Object.entries(formData).forEach(([key, value]) => {
       if (!value) {
-        newErrors[key] = `Enter ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`;
+       const label = key.replace(/([A-Z])/g, ' $1').toLowerCase();
+        newErrors[key] = `Enter ${label}`;
       }
     });
     setErrors(newErrors);
@@ -85,6 +86,7 @@ const Signup = () => {
             {/* First Name */}
             <div className="form-row">
               <label style={{ minWidth: labelWidth }}>First Name:</label>
+            <div>
               <input
                 type="text"
                 name="firstName"
@@ -94,10 +96,12 @@ const Signup = () => {
               />
               {errors.firstName && <div className="error-text">{errors.firstName}</div>}
             </div>
+            </div>
 
             {/* Last Name */}
             <div className="form-row">
               <label style={{ minWidth: labelWidth }}>Last Name:</label>
+              <div>
               <input
                 type="text"
                 name="lastName"
@@ -107,10 +111,12 @@ const Signup = () => {
               />
               {errors.lastName && <div className="error-text">{errors.lastName}</div>}
             </div>
+            </div>
 
             {/* Email */}
             <div className="form-row">
               <label style={{ minWidth: labelWidth }}>Email:</label>
+             <div>
               <input
                 type="email"
                 name="email"
@@ -120,10 +126,12 @@ const Signup = () => {
               />
               {errors.email && <div className="error-text">{errors.email}</div>}
             </div>
+            </div>
 
             {/* Password */}
             <div className="form-row">
               <label style={{ minWidth: labelWidth }}>Password:</label>
+             <div>
               <input
                 type="password"
                 name="password"
@@ -133,10 +141,12 @@ const Signup = () => {
               />
               {errors.password && <div className="error-text">{errors.password}</div>}
             </div>
+            </div>
 
             {/* Gender */}
             <div className="form-row">
               <label style={{ minWidth: labelWidth }}>Gender:</label>
+             <div>
               <select
                 name="gender"
                 className={`form-input ${errors.gender ? 'error-border' : ''}`}
@@ -150,11 +160,13 @@ const Signup = () => {
               </select>
               {errors.gender && <div className="error-text">{errors.gender}</div>}
             </div>
+            </div>
 
             {/* Birthday */}
             <div className="form-row birthday-group">
               <label style={{ minWidth: labelWidth }}>Birthday:</label>
               <div className="birthday-fields">
+               <div>
                 <select
                   name="birthMonth"
                   className={`form-input ${errors.birthMonth ? 'error-border' : ''}`}
@@ -170,6 +182,9 @@ const Signup = () => {
                     )
                   )}
                 </select>
+                 {errors.birthMonth && <div className="error-text">{errors.birthMonth}</div>}
+                </div>
+                <div>
                 <select
                   name="birthDay"
                   className={`form-input ${errors.birthDay ? 'error-border' : ''}`}
@@ -183,6 +198,10 @@ const Signup = () => {
                     </option>
                   ))}
                 </select>
+                 {errors.birthDay && <div className="error-text">{errors.birthDay}</div>}
+                </div>
+
+                <div>
                 <select
                   name="birthYear"
                   className={`form-input ${errors.birthYear ? 'error-border' : ''}`}
@@ -198,12 +217,12 @@ const Signup = () => {
                       </option>
                     );
                   })}
-                </select>
+              </select>
+                  {errors.birthYear && <div className="error-text">{errors.birthYear}</div>}
+                </div>
               </div>
-              {(errors.birthMonth || errors.birthDay || errors.birthYear) && (
-                <div className="error-text">Please complete your birthday</div>
-              )}
             </div>
+
 
             <div className="caption">Why do I need to provide this?</div>
           </div>

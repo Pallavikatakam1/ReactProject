@@ -1,20 +1,19 @@
 .home-container {
-  margin-top: 80px;
+  margin-top: 0px;
 }
 
 .home-box {
   padding: 32px;
-  border-radius: 16px;
-  background-color: #e6ee9c;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .home-title {
   margin-bottom: 20px;
   font-weight: 600;
+  color: rgb(0, 0, 0);
 }
 
 .home-logout-button {
   margin-top: 16px;
+  width: 100px;
 }
