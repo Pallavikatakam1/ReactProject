@@ -1,0 +1,20 @@
+import React from 'react';
+import './Navbar.css';
+import profilePic from './assets/profile.jpg'; 
+import logo from './assets/Logo.svg';
+
+const Navbar = () => {
+  return (
+    <div className="navbar">
+      <div className="navbar-logo">
+        <img src={logo} alt="ExecATLAS" />
+      </div>
+      <div className="navbar-profile">
+        <img src={profilePic} alt="Profile" />
+        <span>Profile</span>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

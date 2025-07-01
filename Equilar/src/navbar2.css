@@ -1,0 +1,50 @@
+.tab-nav {
+  position: fixed;
+  top: 100px; 
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 16px;
+  height: 48px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.arrow {
+  font-size: 20px;
+  color: #666;
+}
+
+.tab-list {
+  display: flex;
+  gap: 24px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.tab-item {
+  cursor: pointer;
+  padding: 8px 0;
+  color: #555;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab-item.active {
+  color: #00254F;
+  font-weight: 600;
+}
+
+.tab-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #00254F;
+  border-radius: 2px;
+}
