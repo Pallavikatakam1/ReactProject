@@ -1,67 +1,107 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './MainContent.css';
-import profilePic from './assets/profile.jpg'; 
-import companyLogo from './assets/companyLogo.png'; 
 import { FaDownload } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import { BsBell } from 'react-icons/bs';
+import { BsBell, BsBellFill } from 'react-icons/bs';
 
 const MainContent = () => {
-  return (
-    <div className="main-wrapper">
-      <div className="content-section">
-        <div className="header">
-          <div>
-            <h2>Your Updates</h2>
-            <p className="update-date">April 15, 2025</p>
+  const [updatesData, setUpdatesData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setUpdatesData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch data", err);
+        setLoading(false);
+      });
+  }, []);
+
+  const renderPersonCard = (person, org, type) => (
+    <div className="update-card" key={person.notificationId}>
+      <div className="card-header">
+        <div className="header-left">
+          <img src={org.logo} alt={org.name} className="company-logo" />
+          <div className="company-info">
+            <h3 className="company-name">{org.name}</h3>
+            <p className="tags">· {org.listNames.join(', ')}</p>
           </div>
-          <button className="download-btn">
-            <FaDownload /> DOWNLOAD
-          </button>
         </div>
+        <div className="sec-date">{person.updatedDate}</div>
+      </div>
 
-        <div className="update-card">
-          <div className="card-header">
-            <img src={companyLogo} alt="Company" className="company-logo" />
-            <div>
-              <h3 className="company-name">Athena Alliance (Private)</h3>
-              <p className="tags">Heads of HR in EDN · HR Executives</p>
-            </div>
-            <span className="update-date-right">Apr 8, 2025 (SEC)</span>
-          </div>
+      <hr className="dashed" />
 
-          <div className="update-details">
-            <p className="section-title">Appointment</p>
-            <div className="person-info">
-              <img src={profilePic} alt="Shaara Roman" className="person-pic" />
-              <div>
-                <strong>Shaara Roman <span className="badge">1st</span></strong>
-                <p className="new-member">New: Member</p>
-              </div>
-            </div>
+      <div className="card-body">
+        <p className="title">{type.replace(/([A-Z])/g, ' $1').trim()}</p>
+        <div className="profile-info">
+          <img src={person.largePhotoCircle} alt={person.fullName} className="profile-pic" />
+          <div>
+            <strong>
+              {person.fullName}
+              {person.isFirstDegreeConnection && <span className="badge">1st</span>}
+            </strong>
+            <p className="new-role">{person.title}</p>
           </div>
         </div>
       </div>
+    </div>
+  );
 
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <span>EMAIL PREFERENCES</span>
-          <FiMail />
+  if (loading) return <div className="main-wrapper">Loading...</div>;
+  if (!updatesData) return <div className="main-wrapper">No data available</div>;
+
+  return (
+    <div className="main-wrapper">
+      <div className="main-container">
+        <div className="header-row">
+          <h2 className="update-heading">Your Updates</h2>
+
+          <div className="date-download-row">
+            <p className="date">April 15, 2025</p>
+            <div className='divider'/>
+            <button className="download-btn">
+              <FaDownload />
+              DOWNLOAD
+            </button>
+          </div>
         </div>
-        <ul className="preferences-list">
-          {[
-            "Deepa's Contacts",
-            'Equilar 500',
-            'Gold Portco CEOs',
-            'Heads of HR in EDN',
-            'HR Executives'
-          ].map((item, idx) => (
-            <li key={idx}>
-              · {item}
-              <BsBell className="bell-icon" />
-            </li>
-          ))}
-        </ul>
+
+        <div className="content-row">
+          <div style={{ flex: 1.5, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {updatesData.companyUpdatesList.map((company) =>
+              Object.entries(company).flatMap(([key, value]) => {
+                if (!Array.isArray(value) || value.length === 0 || key === 'org') return [];
+                return value.map((person) => renderPersonCard(person, company.org, key));
+              })
+            )}
+          </div>
+
+          <div className="sidebar">
+            <div className="sidebar-header">
+              <span>EMAIL PREFERENCES</span>
+              <FiMail />
+            </div>
+            <ul className="sidebar-list">
+              {[
+                "Deepa's Contacts",
+                "Equilar 500",
+                "Gold Portco CEOs",
+                "Heads of HR in EDN",
+                "HR Executives",
+              ].map((item, i) => (
+                <li key={i}>
+                  · {item}
+                  <BsBellFill />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
