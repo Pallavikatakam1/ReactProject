@@ -1,197 +1,255 @@
 .main-wrapper {
   display: flex;
   justify-content: center;
-  background: #f8f9fa;
-  padding: 24px;
+  background: #ffffff;
+  width: 1280px;
 }
 
 .main-container {
   background: #fff;
-  width: 1280px;
 }
 
-/* Header Row */
+/* Header */
 .header-row {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
-  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 70px;
+  margin-bottom: 18px;
+  font-family: 'AvenirLTCom';
 }
+
+
 .update-heading {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 0;
-  color: #444;
-  margin-right: 1130px;
+  font-size: 26px;
+  font-weight: 500;
+  color: #6A6A6A;
+  margin: 10px 0 0px 0px;
+  
 }
 
 .date-download-row {
   display: flex;
   align-items: center;
-  margin-top: 1px;
+  margin-left: 0px;
+  margin-top: 0px;
+  gap: 14px;
+  color: #6A6A6A;
+  height: 25px;
 }
+
 
 .date {
   font-size: 16px;
-  color: #555;
-  /* margin: 4px 0 0; */
-  white-space: nowrap;
-}
-
-
-.download-btn {
-  background-color: #00b3ac;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
- 
+  color: #6A6A6A;
   white-space: nowrap;
 }
 
 .divider {
-  border: none;
-  border-top: 1px solid #ccc;
-  margin: 0 16px;
-  width: 57.4% !important;
-
-  
+  width: 725px;
+  height: 0.7px;
+  background-color: #D4D4D4;
+  margin: 0 10px;
 }
 
-/* Content row */
+.download-btn {
+  color: #00b3ac;
+  border: 1px solid #00b3ac;
+  padding: 4px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.excel-img {
+  width: 16px;
+  height: 16px;
+}
+
+.download-img {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* Layout */
 .content-row {
   display: flex;
-  justify-content: space-between;
   gap: 24px;
 }
 
-/* Update Card */
-.update-card {
+.updates-column {
   flex: 1.5;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 16px;
-  width: 964px;
+  display: flex;
+  flex-direction: column;
+  gap: px;
 }
 
-.card-header {
+/* Company Header */
+.update-card {
+  background: transparent;
+  padding: 1px 16px;
+}
+
+.company-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  height: 54px;
+  margin-bottom: 8px;
+  height: 48px;
+  width: 946px;
+  margin-top: 6px;
 }
 
 .company-logo {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
-  margin-right: 12px;
 }
 
-.company-info{
-  display: flex;
-  flex-direction: column;
-  font-family:Arial-BoldMT ;
-  font-size: 17px;
-  font-weight: bold;
+.company-name {
   color: #336699;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Arial-BoldMT' ;
+  font-size: 17px;
 }
 
 .tags {
+    display: flex;
   font-size: 13px;
-  color: #6A6A6A;
-  margin-top: 0px;
-  margin-right: 250px;
+  color: #6a6a6a;
+  margin: 0px 0 0 0 ;
   font-weight: lighter;
-
 }
 
-.sec-date {
-  font-size: 13px;
-  color: #008bb0;
-  white-space: nowrap;
-  margin-left: 10px;
-
-}
-
-/* Dashed line */
-.dashed {
+/* Event Block */
+.event-block {
   border-top: 1px dashed #ccc;
-  margin: 12px 0;
+  padding-top: 0px;
+  margin-top: 12px;
 }
 
-/* Profile */
-.title {
+.event-type-title {
   font-weight: 600;
-  color: #004ea8;
-  margin-bottom: 10px;
-  margin-right: 790px;
-}
-
-
-.profile-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.profile-info div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-}
-
-.profile-info strong {
+  font-size: 17px;
+  margin: 16px 0 6px;
+  padding-left: 0;
+  margin-top: 6px;
   text-align: left;
-  display: block;
+  font-family: 'Arial-BoldMT';
 }
 
+.event-type-title.appointment {
+  color: #1F5BCF;
+}
+
+.event-type-title.negative {
+  color: #ED3327; 
+}
+.event-type-title.event-type-title.employeement-Agreement{
+    color: #5c27d4;
+}
+
+/* Employee */
+.employee-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
 
 .profile-pic {
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-date-row,
+.role-wealth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.emp-name {
+  font-family: 'Arial-BoldMT';
+  font-size: 15px;
+  color:#2D3E4F ;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.update-date {
+  font-size: 13px;
+  color: #336699;
+  white-space: nowrap;
+}
+
+.source {
+  color: #888;
+  font-style: italic;
+}
+
+.role {
+  font-family: 'ArialMT';
+  font-size: regular;
+  font-size: 13px;
+  color: #6A6A6A;
+  margin-top: 2px;
+}
+
+.wealth-value {
+  font-size: 13px;
+  color: #008bb0;
+  white-space: nowrap;
+  margin-top: 3px;
 }
 
 .badge {
-  background: #0077b6;
+  background-color: #0077b6;
   color: white;
   font-size: 11px;
-  padding: 0px 4px;
-  margin-left: 4px;
-  margin-right: 18px;
-}
-
-.new-role {
-  font-size: 14px;
-  color: #444;
-  margin-top: 4px;
+  width:23px;
+  height: 12px;
+  align-items: center;
 }
 
 /* Sidebar */
 .sidebar {
-  /* flex: 1; */
+  width: 260px;
   background-color: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 4px;
+  border: 1px solid #D4D4D4;
+  border-radius: 4px;
+  width: 236px;
+  height: 232px;
   padding: 16px;
   height: fit-content;
-  width: 260px;
-  top: 0px;
+}
+
+.sidebar-divider {
+  height: 0.7px;
+  background-color: #D4D4D4;
+  margin: 8px 0 12px;
+  width: 200px;
 }
 
 .sidebar-header {
@@ -221,4 +279,28 @@
 .sidebar-list li svg {
   color: #00b3ac;
   font-size: 16px;
+}
+
+.all-updates-container {
+ background-color: #FFFFFF;
+  border: 1px solid #D4D4D4;
+  border-radius: 8px;
+  width: 948px; 
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.company-divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0; 
+}
+
+.dashed {
+  border: none;
+  border-top: 1px dashed #ccc;
+  width: 100%;
+  margin: 12px 0;
 }

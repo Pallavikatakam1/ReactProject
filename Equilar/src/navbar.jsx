@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import profilePic from './assets/profile.jpg'; 
 import logo from './assets/Logo.svg';
+import { FaAngleDown } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-profile">
         <img src={profilePic} alt="Profile" />
-        <span>Profile</span>
+        <div className='down-arrow'><FaAngleDown /></div>
       </div>
     </div>
   );

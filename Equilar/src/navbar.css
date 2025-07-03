@@ -20,6 +20,11 @@
   gap: 8px;
 }
 
+.down-arrow{
+    width: 10px;
+    height: 6px;
+    margin-bottom: 9px;
+}
 .navbar-profile img {
   width: 32px;
   height: 32px;

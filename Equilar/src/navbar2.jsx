@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './navbar2.css';
+import { FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft } from "react-icons/fa6";
 
 const Navbar2 = () => {
   const [activeTab, setActiveTab] = useState('Company Updates');
@@ -11,8 +13,9 @@ const Navbar2 = () => {
 
   return (
     <div className="tab-nav">
-      <div className="arrow">&lt;</div>
+      
       <div className="tab-list">
+        <div className="left-arrow"><FaChevronLeft /></div>
         {tabs.map((tab) => (
           <div
             key={tab.label}
@@ -20,10 +23,13 @@ const Navbar2 = () => {
             onClick={() => setActiveTab(tab.label)}
           >
             {tab.label} ({tab.count})
+            
           </div>
+          
         ))}
+          <div className='right-arrow'><FaChevronRight/></div>
       </div>
-      <div className="arrow">&gt;</div>
+     
     </div>
   );
 };
