@@ -17,16 +17,16 @@
   justify-content: center;
   height: 70px;
   margin-bottom: 18px;
-  font-family: 'AvenirLTCom';
+   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 
 .update-heading {
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 400;
   color: #6A6A6A;
   margin: 10px 0 0px 0px;
-  
+ 
 }
 
 .date-download-row {
@@ -106,6 +106,7 @@
   height: 48px;
   width: 946px;
   margin-top: 6px;
+  
 }
 
 .company-logo {
@@ -116,10 +117,10 @@
 
 .company-name {
   color: #336699;
-  font-weight: bold;
   margin: 0;
-  font-family: 'Arial-BoldMT' ;
   font-size: 17px;
+  font-weight: 500;
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .tags {
@@ -127,7 +128,7 @@
   font-size: 13px;
   color: #6a6a6a;
   margin: 0px 0 0 0 ;
-  font-weight: lighter;
+  font-family: url("./fonts/AvenirLTStd-lighter.otf");  
 }
 
 /* Event Block */
@@ -144,7 +145,7 @@
   padding-left: 0;
   margin-top: 6px;
   text-align: left;
-  font-family: 'Arial-BoldMT';
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .event-type-title.appointment {
@@ -188,29 +189,28 @@
 }
 
 .emp-name {
-  font-family: 'Arial-BoldMT';
   font-size: 15px;
+  font-weight: 400;
   color:#2D3E4F ;
-  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 6px;
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .update-date {
   font-size: 13px;
   color: #336699;
   white-space: nowrap;
+   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .source {
   color: #888;
-  font-style: italic;
 }
 
 .role {
-  font-family: 'ArialMT';
-  font-size: regular;
+   font-family: url("./fonts/AvenirLTStd-Lighter.otf");  
   font-size: 13px;
   color: #6A6A6A;
   margin-top: 2px;
@@ -221,6 +221,7 @@
   color: #008bb0;
   white-space: nowrap;
   margin-top: 3px;
+   font-family: url("./fonts/AvenirLTStd-Lighter.otf");  
 }
 
 .badge {
@@ -230,6 +231,7 @@
   width:23px;
   height: 12px;
   align-items: center;
+   font-family: url("./fonts/AvenirLTStd-lighter.otf");  
 }
 
 /* Sidebar */
@@ -260,12 +262,14 @@
   font-size: 14px;
   color: #333;
   margin-bottom: 12px;
+   font-family: url("./fonts/AvenirLTStd-Heavy.otf");  
 }
 
 .sidebar-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .sidebar-list li {
@@ -274,6 +278,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
 .sidebar-list li svg {

@@ -36,7 +36,7 @@
   font-weight: 500;
   width: auto;
   height: 36px;
-  font-family: 'AvenirLTCom-Medium', sans-serif;
+   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }

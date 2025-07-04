@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './MainContent.css';
-import { FaDownload } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { BsBellFill } from 'react-icons/bs';
 import first from './assets/first.png';
@@ -8,6 +7,7 @@ import second from './assets/second.png';
 import secPlus from './assets/secPlus.png';
 import download from './assets/download.png';
 import Excel from './assets/Excel.png';
+
 
 const MainContent = () => {
   const [updatesData, setUpdatesData] = useState(null);
