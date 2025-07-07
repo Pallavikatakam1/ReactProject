@@ -1,7 +1,7 @@
 .floating-wrapper {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 160px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -32,17 +32,17 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   width: auto;
   height: 36px;
-   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 .feedback-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 3px;
 }

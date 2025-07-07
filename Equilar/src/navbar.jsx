@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import profilePic from './assets/profile.jpg'; 
-import logo from './assets/Logo.svg';
+import logo from './assets/image.png';
 import { FaAngleDown } from "react-icons/fa6";
 
 const Navbar = () => {
