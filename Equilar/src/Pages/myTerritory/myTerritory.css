@@ -1,0 +1,7 @@
+.page-wrapper {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 24px 33px 40px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}

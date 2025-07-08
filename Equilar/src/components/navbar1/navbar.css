@@ -4,11 +4,12 @@
   align-items: center;
   background-color: #2E3E4F;
   padding: 12px 24px;
+  width: 1280px;
   color: white;
   position: sticky !important;
   top: 0px;
   height: 64px;
-  z-index: 1000;
+  z-index: 1000; 
   box-sizing: border-box;
 }
 

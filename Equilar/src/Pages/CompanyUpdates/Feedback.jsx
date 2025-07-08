@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import feedback from './assets/feedback.png';
+import feedback from '../../assets/feedback.png';
 import { FaArrowUp } from 'react-icons/fa';
 import './Feedback.css';
 

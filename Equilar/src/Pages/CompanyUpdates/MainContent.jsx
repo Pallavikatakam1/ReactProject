@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './MainContent.css';
-import first from './assets/first.png';
-import second from './assets/second.png';
-import secPlus from './assets/secPlus.png';
-import download from './assets/download.png';
-import Excel from './assets/Excel.png';
+import first from '../../assets/first.png';
+import second from '../../assets/second.png';
+import secPlus from '../../assets/secPlus.png';
+import download from '../../assets/download.png';
+import Excel from '../../assets/Excel.png';
+
 
 const MainContent = () => {
   const [updatesData, setUpdatesData] = useState(null);
