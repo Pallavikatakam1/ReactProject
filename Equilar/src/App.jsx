@@ -30,7 +30,9 @@ function App() {
       return <NewFinancings />;
     } else if (activeTab === "Saved Searches") {
       return <SavedSearches />;
-    }
+    } else if (activeTab === "My Territory") {
+      return <MyTerritory />;
+}
   };
 
   return (
