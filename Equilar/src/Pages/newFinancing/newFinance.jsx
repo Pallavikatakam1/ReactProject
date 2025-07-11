@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../CompanyUpdates/MainContent.css';
+import './newFinance.css';
 import first from '../../assets/first.png';
 import second from '../../assets/second.png';
 import secPlus from '../../assets/secPlus.png';
@@ -106,3 +106,5 @@ const NewFinancings = () => {
 };
 
 export default NewFinancings;
+
+

@@ -1,10 +1,11 @@
-/* .page-wrapper {
-  width: 1280px;
-  margin-top: 0%;
-  padding: 24px 33px 40px;
-  background-color: #ffffff;
-  box-sizing: border-box;
-} */
+.territory-heading {
+  font-size: 26px;
+  font-weight: 400;
+  color: #6A6A6A;
+  margin: 10px 0 0px 0px;
+  margin-left: 33px;
+  font-family: url("./fonts/AvenirLTStd-Medium.otf");  
+}
 
 .main-wrapper {
   display: flex;
