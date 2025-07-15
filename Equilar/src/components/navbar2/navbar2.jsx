@@ -1,63 +1,51 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa6';
 import './navbar2.css';
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
-const Navbar2 = ({ onTabChange }) => {
-  var nameMap = {
-    "Company Updates": "COMPANY_UPDATES",
-    "My Territory": "MY_TERRITORY",
-    "New PE/VC Financings": "NEW_FINANCINGS",
-    "Saved Searches": "SAVE_SEARCHES"
-  };
+const pathMap = {
+  "Company Updates": "/my-updates",
+  "My Territory": "/my-territory",
+  "New PE/VC Financings": "/new-financings",
+  "Saved Searches": "/saved-searches"
+};
 
-  var tabs = [
-    { label: "Company Updates", count: 15 },
-    { label: "My Territory", count: 12 },
-    { label: "New PE/VC Financings", count: 3 },
-    { label: "Saved Searches", count: 7 }
+const tabs = [
+  { label: "Company Updates",         count: 15 },
+  { label: "My Territory",            count: 12 },
+  { label: "New PE/VC Financings",    count: 3  },
+  { label: "Saved Searches",          count: 7  }
+];
+
+const Navbar2 = () => {
+  const pages = [tabs.slice(0, 2), 
+                 tabs.slice(2, 4)
   ];
-
   const [pageIndex, setPageIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState(tabs[0].label);
 
-  const pages = [
-    tabs.slice(0, 2),
-    tabs.slice(2, 4)
-  ];
-
-  const handleLeft = () => {
-    if (pageIndex > 0) setPageIndex(pageIndex - 1);
-  };
-
-  const handleRight = () => {
-    if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
-  };
-
-  const handleTabClick = (label) => {
-    setActiveTab(label);
-    onTabChange(label); 
-  };
+  const handleLeft  = () => pageIndex > 0              && setPageIndex(p => p - 1);
+  const handleRight = () => pageIndex < pages.length-1 && setPageIndex(p => p + 1);
 
   return (
     <div className="tab-nav">
       <div className="tab-list">
         <div
-          className={`left-arrow ${pageIndex === 0 ? 'inactive' : 'active'}`}
+          className={`left-arrow  ${pageIndex === 0 ? 'inactive' : 'active'}`}
           onClick={handleLeft}
         >
           <FaChevronLeft />
         </div>
-
-        {pages[pageIndex].map((tab) => (
-          <div
+        {pages[pageIndex].map(tab => (
+          <NavLink
             key={tab.label}
-            className={`tab-item ${activeTab === tab.label ? 'active' : ''}`}
-            onClick={() => handleTabClick(tab.label)}
+            to={pathMap[tab.label]}
+            className={({ isActive }) =>
+              `tab-item ${isActive ? 'active' : ''}`
+            }
           >
             {tab.label} ({tab.count})
-          </div>
+          </NavLink>
         ))}
-
         <div
           className={`right-arrow ${pageIndex === pages.length - 1 ? 'inactive' : 'active'}`}
           onClick={handleRight}

@@ -1,18 +1,17 @@
 .navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #2B3D4F;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #2E3E4F;
-  padding: 12px 24px;
-  width: 1280px;
-  color: white;
-  position: sticky !important;
-  top: 0px;
-  height: 64px;
-  z-index: 1000; 
+  justify-content: space-between;
+  padding: 0 24px;
   box-sizing: border-box;
+  position: fixed;       /* Make it stick to top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
-
 
 .navbar-logo img {
   height: 24px;
@@ -26,14 +25,14 @@
   gap: 8px;
 }
 
-.down-arrow{
-    width: 10px;
-    height: 6px;
-    margin-bottom: 9px;
+.down-arrow {
+  width: 10px;
+  height: 6px;
+  margin-bottom: 9px;
 }
+
 .navbar-profile img {
   width: 42px;
   height: 42px;
   border-radius: 50%;
 }
-

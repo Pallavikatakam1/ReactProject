@@ -1,10 +1,18 @@
 .tab-nav {
   display: flex;
-  justify-content: center;   
+  align-items:flex-start;
+  justify-content: center;
   border-bottom: 1px solid #e0e0e0;
-  height: 67px;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
+  height: 57px;
+  width: 100vw;
+  padding: 0 24px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 50px; 
+  z-index: 999;
+  box-sizing: border-box;
 }
+
 
 .tab-list {
   display: flex;

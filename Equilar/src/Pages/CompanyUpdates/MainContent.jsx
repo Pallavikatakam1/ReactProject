@@ -8,7 +8,7 @@ import Excel from '../../assets/Excel.png';
 
 
 const MainContent = () => {
-  const [updatesData, setUpdatesData] = useState(null);
+  const [updatesData, setUpdatesData] = useState({});
 
   useEffect(() => {
     fetch('/data.json')
@@ -79,9 +79,10 @@ const MainContent = () => {
             people.length > 0 ? (
               <div key={eventType} className="event-block">
                 <p className="event-type-title" style={{ color: colorMap[eventType] || '#000' }}>
-                  {eventType.replace(/([A-Z])/g, ' $1')
+                  {/* {eventType.replace(/([A-Z])/g, ' $1')
                     .replace(/^./, str => str.toUpperCase())
-                    .trim()}
+                    .trim()} */}
+                    {eventType}
                 </p>
                 {people.map((person) => renderEmployee(person))}
               </div>
@@ -112,7 +113,7 @@ const MainContent = () => {
 
         <div className="content-row">
           <div className="all-updates-container">
-            {updatesData.companyUpdatesList.map((company, index) => (
+            {updatesData?.companyUpdatesList?.map((company, index) => (
               <div key={index}>
                 {renderCompany(company, index)}
                 {index < updatesData.companyUpdatesList.length - 1 && (
