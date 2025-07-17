@@ -1,9 +1,10 @@
 .main-wrapper {
-  width: 100vw;
+  width: 948px;
   min-height: 100vh;
   background: #ffffff;
   padding-top: 0px; 
   padding-left: 60px;
+  margin-top: -120px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -22,7 +23,7 @@
   align-items: flex-start;
   justify-content: center;
   height: 100px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   padding: 0 32px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
@@ -37,7 +38,7 @@
 .date-download-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 25px;
   height: 25px;
   color: #6A6A6A;
 }
@@ -49,9 +50,11 @@
 
 .divider {
   flex: 1;
-  height: 0.7px;
+  height: 0.8px;
   background-color: #D4D4D4;
-  margin: 0 10px;
+  margin: 0px;
+  width: 657px;
+
 }
 
 .download-btn {
@@ -107,6 +110,7 @@
 .company-header-section{
   padding: 0px;
   margin: 0px;
+  width: 948px;
 }
 
 .company-header {
@@ -114,18 +118,33 @@
   align-items: center;
   gap: 12px;
   height: 48px !important;
-  width: 100%;
-  padding: 0%;
+  width: 948px;
+}
+
+.company-logo-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-left: 16px;
 }
 
 .company-logo {
   width: 32px;
   height: 32px;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
-  /* object-fit: cover; */
+  object-fit: contain;
+  margin-left: 16px;
 }
 
+.company-info{
+    margin-left: 6px;
+}
 .company-name {
   color: #336699;
   margin: 0;
@@ -151,9 +170,9 @@
 .event-type-title {
   font-weight: 600;
   font-size: 17px;
-  /* padding-left: 16px; */
+  padding-left: 16px;
   text-align: left;
-  /* margin: 3px 0 8px; */
+  margin: 3px 0 8px;
   text-transform: capitalize;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
@@ -163,7 +182,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .profile-pic {
@@ -209,6 +228,7 @@
 .role {
   font-size: 13px;
   color: #6A6A6A;
+  margin-top: 0px;
   font-family: url("./fonts/AvenirLTStd-Lighter.otf");
 }
 
@@ -235,6 +255,8 @@
 
 .company-divider {
   border: none;
-  border-top: 0px solid #ccc;
+  border-top: 1px solid #ccc;
   margin: 0;
 }
+
+
