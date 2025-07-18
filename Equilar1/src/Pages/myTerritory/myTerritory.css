@@ -1,10 +1,11 @@
-.territory-heading {
+.territory-heading {{
   font-size: 26px;
   font-weight: 400;
   color: #6A6A6A;
-  margin: 10px 0 0px 0px;
+  margin: 0px 0 0px 0px;
   margin-left: 33px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
+}
 }
 
 .main-wrapper {
@@ -120,20 +121,21 @@
 }
 
 .update-card {
+    
   background: transparent;
   padding: 1px 16px;
   width: 948px ;
+
 }
 
 .company-header {
+    {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
   height: 48px;
   width: 948px;
-  margin-top: 8px;
-  margin-left: 16px ;
+}
 }
 
 .company-logo {
@@ -164,7 +166,6 @@
   width: 948px;
   margin-left: 0px;
   padding-top: 0px;
-  margin-top: 12px;
 }
 
 .event-type-title {

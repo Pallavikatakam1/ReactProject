@@ -7,8 +7,8 @@ import MainContent from './Pages/CompanyUpdates/MainContent';
 import Sidebar from './Pages/CompanyUpdates/Sidebar';
 import Feedback from './Pages/CompanyUpdates/Feedback';
 import MyTerritory from './Pages/myTerritory/myTerritory';
-import NewFinancings from './Pages/newFinancing/newFinance'; 
-// import SavedSearches from './Pages/savedSearches/savedSearch'; 
+import NewFinancing from './Pages/newFinancing/newFinance'; 
+import SavedSearches from './Pages/savedSearches/savedSearch'; 
 
 const CompanyUpdatesPage = () => (
   <div className="main-wrapper">
@@ -31,9 +31,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/my-updates" />} />
           <Route path="/my-updates" element={<CompanyUpdatesPage />} />
-           <Route path="/my-territory" element={<MyTerritory />} />
-          <Route path="/new-financings" element={<newFinancing />} />
-          {/* <Route path="/saved-searches" element={<savedSearch />} /> */}
+          <Route path="/my-territory" element={<MyTerritory />} />
+          <Route path="/new-financings" element={<NewFinancing />} /> 
+          <Route path="/saved-searches" element={<SavedSearches />} />
         </Routes>
       </div>
     </Router>
