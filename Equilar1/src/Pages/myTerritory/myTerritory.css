@@ -1,17 +1,18 @@
-.territory-heading {{
+.territory-heading {
   font-size: 26px;
   font-weight: 400;
   color: #6A6A6A;
   margin: 0px 0 0px 0px;
   margin-left: 33px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
-}
+
 }
 
 .main-wrapper {
   display: flex;
   justify-content: center;
   background: #ffffff;
+  margin-top: 0px;
   width: 1280px;
 }
 
@@ -129,13 +130,12 @@
 }
 
 .company-header {
-    {
+    
   display: flex;
   align-items: center;
   gap: 12px;
   height: 48px;
   width: 948px;
-}
 }
 
 .company-logo {

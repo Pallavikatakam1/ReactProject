@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import Navbar from './components/navbar1/navbar';
 import Navbar2 from './components/navbar2/navbar2';
+import Sidebar from './components/sidebar/Sidebar';
+
 import MainContent from './Pages/CompanyUpdates/MainContent';
-import Sidebar from './Pages/CompanyUpdates/Sidebar';
 import Feedback from './Pages/CompanyUpdates/Feedback';
 import MyTerritory from './Pages/myTerritory/myTerritory';
 import NewFinancing from './Pages/newFinancing/newFinance'; 
@@ -15,8 +16,8 @@ const CompanyUpdatesPage = () => (
     <div className="main-container">
       <div className="header-layout">
         <MainContent />
-        <Sidebar />
       </div>
+        <Sidebar />
       <Feedback />
     </div>
   </div>
