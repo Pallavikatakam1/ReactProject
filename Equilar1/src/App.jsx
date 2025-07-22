@@ -5,7 +5,7 @@ import Navbar from './components/navbar1/navbar';
 import Navbar2 from './components/navbar2/navbar2';
 import Sidebar from './components/sidebar/Sidebar';
 
-import MainContent from './Pages/CompanyUpdates/MainContent';
+import MainContent from './Pages/CompanyUpdates/mainContent';
 import Feedback from './Pages/CompanyUpdates/Feedback';
 import MyTerritory from './Pages/myTerritory/myTerritory';
 import NewFinancing from './Pages/newFinancing/newFinance'; 

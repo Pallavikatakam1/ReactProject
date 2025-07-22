@@ -1,262 +1,37 @@
-.main-wrapper {
-  width: 948px;
-  min-height: 100vh;
-  background: #ffffff;
-  padding-top: 0px; 
-  padding-left: 60px;
-  margin-top: -130px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
-
-.main-container {
-  width: 100%;
-  background-color: #fff;
-  align-self: center;
-}
-
-/* Header Section */
-.header-row {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100px;
-  margin-bottom: 8px;
-  padding: 0 32px;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
-}
-
-.update-heading {
-  font-size: 26px;
-  font-weight: 400;
-  color: #6A6A6A;
-  margin: 10px 0 0 0;
-}
-
-.date-download-row {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  height: 25px;
-  color: #6A6A6A;
-}
-
-.date {
-  font-size: 16px;
-  white-space: nowrap;
-}
-
-.divider {
-  flex: 1;
-  height: 0.8px;
-  background-color: #D4D4D4;
-  margin: 0px;
-  width: 657px;
-
-}
-
-.download-btn {
-  color: #00b3ac;
-  border: 1px solid #00b3ac;
-  padding: 4px 14px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  background-color: transparent;
-  white-space: nowrap;
-}
-
-.excel-img {
-  width: 16px;
-  height: 16px;
-}
-
-.download-img {
-  width: 20px;
-  height: 20px;
-}
-
-/* Content Row */
-.content-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 0 32px 32px;
-  box-sizing: border-box;
-  gap: 32px;
-}
-
-/* Main Update Section */
-.all-updates-container {
-  flex: 3;
-  background-color: #FFFFFF;
-  border: 1px solid #D4D4D4;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  background-color: #f4f4f4;
 }
 
-.company-block {
-  background: transparent;
-  border-radius: 6px;
-}
-
-.company-header-section{
-  padding: 0px;
-  margin: 0px;
-  width: 948px;
-}
-
-.company-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 48px !important;
-  width: 948px;
-}
-
-.company-logo-placeholder {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-weight: bold;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-  margin-left: 16px;
-}
-
-.company-logo {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  margin-left: 16px;
-}
-
-.company-info{
-    margin-left: 6px;
-}
-.company-name {
-  color: #336699;
-  margin: 0;
-  font-size: 17px;
-  font-weight: 500;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
-}
-
-.tags {
-  font-size: 13px;
-  color: #6a6a6a;
-  margin: 0;
-  font-family: url("./fonts/AvenirLTStd-lighter.otf");
-}
-
-.event-block {
-  border-top: 1px dashed #ccc;
-  width: 100%;
-  /* margin-top: 12px; */
-  padding-top: 0;
-}
-
-.event-type-title {
-  font-weight: 600;
-  font-size: 17px;
-  padding-left: 16px;
-  text-align: left;
-  margin: 3px 0 8px;
-  text-transform: capitalize;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
-}
-
-/* === Employee Details === */
-.employee-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.profile-pic {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-left: 32px;
-}
-
-.profile-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.name-date-row,
-.role-wealth-row {
+.container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 30px;
+  padding: 20px;
 }
 
-.emp-name {
-  font-size: 15px;
-  font-weight: 400;
-  color: #2D3E4F;
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  text-align: center;
+  padding: 12px 0;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.page-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
 
-.update-date {
-  font-size: 13px;
-  color: #336699;
-  white-space: nowrap;
-  margin-right: 30px;
-  font-family: url("./fonts/AvenirLTStd-Medium.otf");
-}
-
-.role {
-  font-size: 13px;
-  color: #6A6A6A;
-  margin-top: 0px;
-  font-family: url("./fonts/AvenirLTStd-Lighter.otf");
-}
-
-.wealth-value {
-  font-size: 13px;
-  color: #008bb0;
-  white-space: nowrap;
-  margin-top: 3px;
-  margin-right: 30px;
-  font-family: url("./fonts/AvenirLTStd-Lighter.otf");
-}
-
-.badge {
-  background-color: #0077b6;
-  color: white;
-  font-size: 11px;
-  width: 23px;
-  height: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: url("./fonts/AvenirLTStd-lighter.otf");
-}
-
-.company-divider {
-  border: none;
-  border-top: 1px solid #ccc;
+.org-location {
   margin: 0;
 }
-
-
