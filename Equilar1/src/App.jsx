@@ -14,13 +14,13 @@ import SavedSearches from './Pages/savedSearches/savedSearch';
 const CompanyUpdatesPage = () => (
   <div className="main-wrapper">
     <div className="main-container">
-      <div className="header-layout">
+      {/* <div className="header-layout"> */}
         <MainContent />
       </div>
         <Sidebar />
       <Feedback />
     </div>
-  </div>
+  // </div>
 );
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
       <div className="page-wrapper">
         <Navbar />
         <Navbar2 />
+        <Sidebar />
         <Routes>
           <Route path="/" element={<Navigate to="/my-updates" />} />
           <Route path="/my-updates" element={<CompanyUpdatesPage />} />

@@ -5,20 +5,28 @@
   margin: 0px 0 0px 0px;
   margin-left: 33px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
-
 }
 
 .main-wrapper {
+  width: 948px;
+  min-height: 100vh;
+  background: #ffffff;
+  padding-top: 0px; 
+  padding-left: 0px;
+  margin-top: 0px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  background: #ffffff;
-  margin-top: 0px;
-  width: 1280px;
+  align-items: flex-start;
+  margin-left: 165px;
 }
 
 .main-container {
-  background: #fff;
-  width: 1280px;
+  width: 100%;
+  background-color: #fff;
+  align-self: center;
+  margin-top: -337px;
+  
 }
 
 /* Header */
@@ -29,7 +37,7 @@
   justify-content: center;
   height: 90px;
   margin-bottom: 12px;
-  margin-left: 33px;
+  margin-left: 0px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");  
 }
 
@@ -93,7 +101,7 @@
   display: flex;
   flex-direction: column;
   width: 948px;
-  margin-left: 33px;
+  margin-left: 0px;
 }
 
 .all-updates-container {
@@ -263,6 +271,3 @@
   border-top: 1px solid #ccc;
   margin: 0;
 }
-
-
-

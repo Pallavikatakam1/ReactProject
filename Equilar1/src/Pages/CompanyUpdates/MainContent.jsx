@@ -6,9 +6,10 @@ import secPlus from '../../assets/secPlus.png';
 import download from '../../assets/download.png';
 import Excel from '../../assets/Excel.png';
 
-
 const MainContent = () => {
   const [updatesData, setUpdatesData] = useState({});
+  const [visibleCompanyCount, setVisibleCompanyCount] = useState(50);
+  const [showLoadMore, setShowLoadMore] = useState(false);
 
   useEffect(() => {
     fetch('/data.json')
@@ -20,14 +21,14 @@ const MainContent = () => {
   const getInitials = (name) => {
     if (!name) return '';
     const words = name.trim().split(' ');
-    if (words.length === 1) return words[0].substring(0,2).toUpperCase();
+    if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
     return (words[0][0]).toUpperCase();
   };
 
   const getColorFromName = (name) => {
     let hash = 0;
-    for (let i = 0; i < name.length; i++) { 
-        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
     }
     const hue = Math.abs(hash) % 360;
     return `hsl(${hue}, 60%, 60%)`;
@@ -36,24 +37,16 @@ const MainContent = () => {
   const renderEmployee = (person) => (
     <div className="employee-row" key={person.notificationId}>
       <img src={person.largePhotoCircle} alt={person.fullName} className="profile-pic" />
-
       <div className="profile-details">
         <div className="name-date-row">
           <div className="emp-name">
             <strong>{person.fullName}</strong>
-            {person.isFirstDegreeConnection && (
-              <img src={first} alt="1st" className="badge" />
-            )}
-            {person.isSecondDegreeConnection && (
-              <img src={second} alt="2nd" className="badge" />
-            )}
-            {person.isThirdDegreeConnection && (
-              <img src={secPlus} alt="3rd+" className="badge" />
-            )}
+            {person.isFirstDegreeConnection && <img src={first} alt="1st" className="badge" />}
+            {person.isSecondDegreeConnection && <img src={second} alt="2nd" className="badge" />}
+            {person.isThirdDegreeConnection && <img src={secPlus} alt="3rd+" className="badge" />}
           </div>
           <div className="update-date">{person.updatedDate}</div>
         </div>
-
         <div className="role-wealth-row">
           <p className="role">{person.title}</p>
           <p className="wealth-value">{person.wealthEventValue || ''}</p>
@@ -79,13 +72,11 @@ const MainContent = () => {
 
     const logoElement = org.logo ? (
       <img src={org.logo} alt={org.name} className="company-logo" />
-    ) : (  
-        <div className="company-logo-placeholder" 
-        style={{ backgroundColor: getColorFromName(org.name),
-         }}>
-            {getInitials(org.name)}
-        </div>
-        );
+    ) : (
+      <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(org.name) }}>
+        {getInitials(org.name)}
+      </div>
+    );
 
     return (
       <div className="company-block" key={index}>
@@ -93,20 +84,19 @@ const MainContent = () => {
           <div className="company-header">
             {logoElement}
             <div className="company-info">
-              <h3 className="company-name">{org.name}</h3>
+              <h3 className="companyName">{org.name}</h3>
               <p className="tags">· {org.listNames.join(' · ')}</p>
             </div>
           </div>
-        </div>        
-
+        </div>
 
         <div className="employee-updates-section">
           {Object.entries(events).map(([eventType, people]) =>
             people.length > 0 ? (
               <div key={eventType} className="event-block">
                 <p className="event-type-title" style={{ color: colorMap[eventType] || '#000' }}>
-                    {eventType.replace(/([A-Z])/g, ' $1').trim()}
-                    </p>
+                  {eventType.replace(/([A-Z])/g, ' $1').trim()}
+                </p>
                 {people.map((person) => renderEmployee(person))}
               </div>
             ) : null
@@ -116,7 +106,24 @@ const MainContent = () => {
     );
   };
 
-  if (!updatesData) return <div className="main-wrapper">Loading...</div>;
+  useEffect(() => {
+    if (!updatesData.companyUpdatesList) return;
+    const handleScroll = () => {
+      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+      if (
+        scrolledToBottom &&
+        visibleCompanyCount < updatesData.companyUpdatesList.length
+      ) {
+        setShowLoadMore(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [visibleCompanyCount, updatesData.companyUpdatesList]);
+
+  if (!updatesData || !updatesData.companyUpdatesList) {
+    return <div className="main-wrapper">Loading...</div>;
+  }
 
   return (
     <div className="main-wrapper">
@@ -127,25 +134,48 @@ const MainContent = () => {
             <p className="date">April 15, 2025</p>
             <div className="divider" />
             <button className="download-btn">
-              <img src={Excel} className="excel-img" />
+              <img src={Excel} className="excel-img" alt="excel" />
               DOWNLOAD
-              <img src={download} className="download-img" />
+              <img src={download} className="download-img" alt="download" />
             </button>
           </div>
         </div>
 
+        {/* <div className="company-count-debug">
+          Showing {Math.min(visibleCompanyCount, updatesData.companyUpdatesList.length)} of {updatesData.companyUpdatesList.length} companies
+        </div> */}
+
         <div className="content-row">
           <div className="all-updates-container">
-            {updatesData?.companyUpdatesList?.map((company, index) => (
+            {updatesData.companyUpdatesList.slice(0, visibleCompanyCount).map((company, index) => (
               <div key={index}>
                 {renderCompany(company, index)}
-                {index < updatesData.companyUpdatesList.length - 1 && (
+                {index < visibleCompanyCount - 1 && (
                   <hr className="company-divider" />
                 )}
               </div>
             ))}
           </div>
         </div>
+        {visibleCompanyCount < updatesData.companyUpdatesList.length && showLoadMore && (
+          <div className="load-more-container">
+            <button
+              className="load-more-btn"
+              onClick={() => {
+                const nextCount = visibleCompanyCount + 50;
+                if (nextCount < updatesData.companyUpdatesList.length) {
+                  setVisibleCompanyCount(nextCount);
+                  setShowLoadMore(false);
+                } else {
+                  setVisibleCompanyCount(updatesData.companyUpdatesList.length);
+                  setShowLoadMore(false);
+                }
+              }}
+            >
+              Load More Companies
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

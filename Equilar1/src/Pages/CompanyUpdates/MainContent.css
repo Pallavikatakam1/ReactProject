@@ -1,3 +1,22 @@
+
+.company-count-debug {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.load-more-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+  padding: 16px 0;
+}
 .main-wrapper {
   width: 948px;
   min-height: 100vh;
@@ -8,12 +27,16 @@
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  margin-left: 77px; 
 }
 
 .main-container {
   width: 100%;
   background-color: #fff;
   align-self: center;
+  margin-top: 24px;
+  
 }
 
 /* Header Section */
@@ -24,7 +47,7 @@
   justify-content: center;
   height: 100px;
   margin-bottom: 8px;
-  padding: 0 32px;
+
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
 
@@ -86,9 +109,7 @@
 .content-row {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  padding: 0 32px 32px;
-  box-sizing: border-box;
+  width: 946px;
   gap: 32px;
 }
 
@@ -145,7 +166,8 @@
 .company-info{
     margin-left: 6px;
 }
-.company-name {
+
+.companyName {
   color: #336699;
   margin: 0;
   font-size: 17px;
@@ -257,6 +279,18 @@
   border: none;
   border-top: 1px solid #ccc;
   margin: 0;
+}
+
+.load-more-btn{
+ position: fixed;
+ align-items: center;
+ width: 250px;
+ bottom: 0;
+ left: 33%;
+ text-align: center;
+ background-color: #fffefe;
+ outline: #0077b6 solid 1px;
+ text-emphasis-color: #0077b6;
 }
 
 

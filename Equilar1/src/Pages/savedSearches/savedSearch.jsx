@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './savedSearch.css';
+import styles from './savedSearch.module.css';
 import first from '../../assets/first.png';
 import second from '../../assets/second.png';
 import secPlus from '../../assets/secPlus.png';
 import download from '../../assets/download.png';
 import Excel from '../../assets/Excel.png';
+import defaultImage from '../../assets/defaultImage.png';
 
 const SavedSearch = () => {
   const [groupedProfiles, setGroupedProfiles] = useState({});
@@ -62,24 +63,26 @@ const SavedSearch = () => {
     const photo = person.largePhotoCircle;
 
     return (
-      <div className="employee-row" key={person.notificationId || person.profileLink || person._index}>
-        {photo ? (
-          <img src={photo} alt={name} className="profile-pic" />
-        ) : (
-          <div className="profile-placeholder" style={{ backgroundColor: getColorFromName(name) }}>
-            {getInitials(name)}
-          </div>
-        )}
+      <div className={styles["employee-row"]} key={person.notificationId || person.profileLink || person._index}>
+        <img
+          src={photo || defaultImage}
+          alt={name}
+          className={styles["profile-pic"]}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = defaultImage;
+          }}
+        />
 
-        <div className="profile-details">
-          <div className="name-date-row">
-            <div className="emp-name">
+        <div className={styles["profile-details"]}>
+          <div className={styles["name-date-row"]}>
+            <div className={styles["emp-name"]}>
               <strong>{name}</strong>
-              {person.isFirstDegreeConnection && <img src={first} alt="1st" className="badge" />}
-              {person.isSecondDegreeConnection && <img src={second} alt="2nd" className="badge" />}
-              {person.isThirdDegreeConnection && <img src={secPlus} alt="3rd+" className="badge" />}
+              {person.isFirstDegreeConnection && <img src={first} alt="1st" className={styles["badge"]} />}
+              {person.isSecondDegreeConnection && <img src={second} alt="2nd" className={styles["badge"]} />}
+              {person.isThirdDegreeConnection && <img src={secPlus} alt="3rd+" className={styles["badge"]} />}
             </div>
-            <div className="update-date">{date}</div>
+            <div className={styles["update-date"]}>{date}</div>
           </div>
         </div>
       </div>
@@ -87,96 +90,130 @@ const SavedSearch = () => {
   };
 
   const renderCompanyGroup = (companyName, companyData) => {
-    const logo = companyData.logo ? (
-      <img src={companyData.logo} alt={companyName} className="company-logo" />
-    ) : (
-      <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(companyName) }}>
-        {getInitials(companyName)}
-      </div>
-    );
-
-    return (
-      <div className="company-block" key={companyName}>
-        <div className="company-header-section">
-          <div className="company-header">
-            {logo}
-            <div className="company-info">
-              <h3 className="company-name">{companyName}</h3>
-              <p className="tags">· {companyData.tags.join(' · ')}</p>
-            </div>
-          </div>
-        </div>
-
-        <hr className="dashed-divider" />
-
-        <div className="employee-updates-section">
-          {companyData.people.map((person) => renderEmployee(person))}
-        </div>
-
-        <hr className="company-divider" />
-      </div>
-    );
-  };
-
-const renderOrgUpdate = (org) => {
-  const logo = org.orgLogo ? (
-    <img src={org.orgLogo} alt={org.orgName} className="company-logo" />
-  ) : (
-    <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(org.orgName) }}>
-      {getInitials(org.orgName)}
-    </div>
-  );
-
-  const locationParts = [org.city, org.state, org.country].filter(Boolean);
-  const location = locationParts.join(', ');
+  const hasValidLogo = companyData.logo && companyData.logo.trim() !== '';
 
   return (
-    <div className="company-block" key={org.notificationId}>
-      <div className="company-header-section">
-        <div className="company-header">
-          {logo}
-          <div className="company-info">
-            <h3 className="company-name">{org.orgName}</h3>
-            {org.listNames?.length > 0 && (
-              <p className="tags">· {org.listNames.join(' · ')}</p>
-            )}
+    <div className={styles["company-block"]} key={companyName}>
+      <div className={styles["company-header-section"]}>
+        <div className={styles["company-header"]}>
+          <div className={styles["logo-wrapper"]}>
+            {hasValidLogo ? (
+              <img
+                src={companyData.logo}
+                alt={companyName}
+                className={styles["company-logo"]}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+            ) : null}
+
+            <div
+              className={styles["company-logo-placeholder"]}
+              style={{
+                backgroundColor: getColorFromName(companyName),
+                display: hasValidLogo ? 'none' : 'flex'
+              }}
+            >
+              {getInitials(companyName)}
+            </div>
+          </div>
+
+          <div className={styles["company-info"]}>
+            <h3 className={styles["company-name"]}>{companyName}</h3>
+            <p className={styles["tags"]}>· {companyData.tags.join(' · ')}</p>
           </div>
         </div>
-        <div className="update-date">{org.updatedDate}</div>
       </div>
 
-      <hr className="dashed-divider" />
+      <hr className={styles["dashed-divider"]} />
 
-      <div className="org-extra-info">
-        {location && <p className="org-location"><strong>Location:</strong> {location}</p>}
-        {org.employeeCount && <p className="org-empcount"><strong>Employees:</strong> {org.employeeCount}</p>}
+      <div className={styles["employee-updates-section"]}>
+        {companyData.people.map((person) => renderEmployee(person))}
       </div>
 
-      <hr className="company-divider" />
+      <hr className={styles["company-divider"]} />
     </div>
   );
 };
 
 
+  const renderOrgUpdate = (org) => {
+    return (
+      <div className={styles["company-block"]} key={org.notificationId}>
+        <div className={styles["company-header-section"]}>
+          <div className={styles["company-header"]}>
+            <div className={styles["logo-wrapper"]}>
+              <img
+                src={org.orgLogo}
+                alt={org.orgName}
+                className={styles["company-logo"]}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  const fallback = e.target.nextSibling;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div
+                className={styles["company-logo-placeholder"]}
+                style={{ backgroundColor: getColorFromName(org.orgName), display: 'none' }}
+              >
+                {getInitials(org.orgName)}
+              </div>
+            </div>
+
+            <div className={styles["company-info"]}>
+              <h3 className={styles["company-name"]}>{org.orgName}</h3>
+              {org.listNames?.length > 0 && (
+                <p className={styles["tags"]}>· {org.listNames.join(' · ')}</p>
+              )}
+            </div>
+          </div>
+          <div className={styles["update-date"]}>{org.updatedDate}</div>
+        </div>
+
+        <hr className={styles["dashed-divider"]} />
+
+        <div className={styles["org-extra-info"]}>
+          {org.city && (
+            <p className={styles["org-location"]}>
+              <strong>Location:</strong> {[org.city, org.state, org.country].filter(Boolean).join(', ')}
+            </p>
+          )}
+          {org.employeeCount && (
+            <p className={styles["org-empcount"]}>
+              <strong>Employees:</strong> {org.employeeCount}
+            </p>
+          )}
+        </div>
+
+        <hr className={styles["company-divider"]} />
+      </div>
+    );
+  };
+
   return (
-    <div className="main-wrapper">
-      <div className="main-container">
-        <div className="header-row">
-          <h2 className="update-heading">Saved Searches</h2>
-          <div className="date-download-row">
-            <p className="date">April 15, 2025</p>
-            <div className="divider" />
-            <button className="download-btn">
-              <img src={Excel} className="excel-img" alt="excel" />
+    <div className={styles["main-wrapper"]}>
+      <div className={styles["main-container"]}>
+        <div className={styles["header-row"]}>
+          <h2 className={styles["update-heading"]}>Saved Searches</h2>
+          <div className={styles["date-download-row"]}>
+            <p className={styles["date"]}>April 15, 2025</p>
+            <div className={styles["divider"]} />
+            <button className={styles["download-btn"]}>
+              <img src={Excel} className={styles["excel-img"]} alt="excel" />
               DOWNLOAD
-              <img src={download} className="download-img" alt="download" />
+              <img src={download} className={styles["download-img"]} alt="download" />
             </button>
           </div>
         </div>
 
-        <div className="content-row">
-          
-          <div className="all-updates-container">
+        <div className={styles["content-row"]}>
+          <div className={styles["all-updates-container"]}>
             {Object.entries(groupedProfiles).map(([companyName, companyData]) =>
               renderCompanyGroup(companyName, companyData)
             )}

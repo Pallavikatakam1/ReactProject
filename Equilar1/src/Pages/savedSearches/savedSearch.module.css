@@ -4,17 +4,22 @@
   background: #ffffff;
   padding-top: 0px; 
   padding-left: 0px;
-  margin-top: 40px;
+  margin-top: 0px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  margin-left: 167px; 
 }
 
 .main-container {
   width: 100%;
   background-color: #fff;
   align-self: center;
+  margin-top: 48px;
+  
 }
+
 
 /* Header Section */
 .header-row {
@@ -24,7 +29,6 @@
   justify-content: center;
   height: 100px;
   margin-bottom: 8px;
-  padding: 0 32px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
 
@@ -91,9 +95,7 @@
 .content-row {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 0 32px 32px;
-  box-sizing: border-box;
+  width: 946px;
   gap: 32px;
 }
 
@@ -155,6 +157,7 @@
   margin-top: 10px;
   font-size: 17px;
   font-weight: 500;
+  margin: 0 0 0 0;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
 
@@ -340,6 +343,4 @@
   color: #6A6A6A;
   margin-left: 27px;
 }
-
-
 

@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebar-header">
         EMAIL PREFERENCES
-        <span style={{ fontSize: "16px", color: "#00b3ac" }}>✉</span>
+        <span style={{ fontSize: "16px", color: "#00b3ac",marginRight: "16px"}}>✉</span>
       </div>
       <div className="sidebar-divider" />
       <ul className="sidebar-list">
