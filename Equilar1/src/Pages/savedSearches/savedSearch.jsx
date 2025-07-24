@@ -76,7 +76,7 @@ const SavedSearch = () => {
 
         <div className={styles["profile-details"]}>
           <div className={styles["name-date-row"]}>
-            <div className={styles["emp-name"]}>
+            <div className={styles["empName"]}>
               <strong>{name}</strong>
               {person.isFirstDegreeConnection && <img src={first} alt="1st" className={styles["badge"]} />}
               {person.isSecondDegreeConnection && <img src={second} alt="2nd" className={styles["badge"]} />}

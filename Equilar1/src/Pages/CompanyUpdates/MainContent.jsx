@@ -9,21 +9,19 @@ import Excel from '../../assets/Excel.png';
 const MainContent = () => {
   const [updatesData, setUpdatesData] = useState({});
   const [visibleCompanyCount, setVisibleCompanyCount] = useState(50);
-  const [showLoadMore, setShowLoadMore] = useState(false);
-  const [logoError, setLogoError] = useState({}); 
+  const [logoError, setLogoError] = useState({});
 
   useEffect(() => {
     fetch('/data.json')
-      .then(res => res.json())
-      .then(data => setUpdatesData(data))
-      .catch(err => console.error("Failed to fetch data", err));
+      .then((res) => res.json())
+      .then((data) => setUpdatesData(data))
+      .catch((err) => console.error('Failed to fetch data', err));
   }, []);
 
   const getInitials = (name) => {
     if (!name) return '';
     const words = name.trim().split(' ');
-    if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
-    return (words[0][0]).toUpperCase();
+    return words.length === 1 ? words[0].substring(0, 2).toUpperCase() : words[0][0].toUpperCase();
   };
 
   const getColorFromName = (name) => {
@@ -36,7 +34,7 @@ const MainContent = () => {
   };
 
   const handleLogoError = (companyName) => {
-    setLogoError(prev => ({ ...prev, [companyName]: true }));
+    setLogoError((prev) => ({ ...prev, [companyName]: true }));
   };
 
   const renderEmployee = (person) => (
@@ -75,18 +73,19 @@ const MainContent = () => {
       stockSold: '#007EFF',
     };
 
-    const logoElement = !logoError[org.name] && org.logo ? (
-      <img
-        src={org.logo}
-        alt={org.name}
-        className="company-logo"
-        onError={() => handleLogoError(org.name)}
-      />
-    ) : (
-      <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(org.name) }}>
-        {getInitials(org.name)}
-      </div>
-    );
+    const logoElement =
+      !logoError[org.name] && org.logo ? (
+        <img
+          src={org.logo}
+          alt={org.name}
+          className="company-logo"
+          onError={() => handleLogoError(org.name)}
+        />
+      ) : (
+        <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(org.name) }}>
+          {getInitials(org.name)}
+        </div>
+      );
 
     return (
       <div className="company-block" key={index}>
@@ -101,38 +100,38 @@ const MainContent = () => {
         </div>
 
         <div className="employee-updates-section">
-          {Object.entries(events).map(([eventType, people]) =>
-            people.length > 0 ? (
-              <div key={eventType} className="event-block">
-                <p className="event-type-title" style={{ color: colorMap[eventType] || '#000' }}>
-                  {eventType.replace(/([A-Z])/g, ' $1').trim()}
-                </p>
-                {people.map((person) => renderEmployee(person))}
-              </div>
-            ) : null
+          {Object.entries(events).map(
+            ([eventType, people]) =>
+              people.length > 0 && (
+                <div key={eventType} className="event-block">
+                  <p className="event-type-title" style={{ color: colorMap[eventType] || '#000' }}>
+                    {eventType.replace(/([A-Z])/g, ' $1').trim()}
+                  </p>
+                  {people.map((person) => renderEmployee(person))}
+                </div>
+              )
           )}
         </div>
       </div>
     );
   };
 
-  useEffect(() => {
-    if (!updatesData.companyUpdatesList) return;
-    const handleScroll = () => {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
-      if (
-        scrolledToBottom &&
-        visibleCompanyCount < updatesData.companyUpdatesList.length
-      ) {
-        setShowLoadMore(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [visibleCompanyCount, updatesData.companyUpdatesList]);
-
   if (!updatesData || !updatesData.companyUpdatesList) {
     return <div className="main-wrapper">Loading...</div>;
+  }
+
+  const totalCompanies = updatesData.companyUpdatesList.length;
+  // const totalCompanies = 108;
+  let showButton = null;
+  if (visibleCompanyCount < totalCompanies) {
+    const nextCount = Math.min(visibleCompanyCount + 50, totalCompanies);
+    showButton = (
+      <div className="load-more-container">
+        <button className="load-more-btn" onClick={() => setVisibleCompanyCount(nextCount)}>
+          Load More Companies
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -161,26 +160,7 @@ const MainContent = () => {
             ))}
           </div>
         </div>
-
-        {visibleCompanyCount < updatesData.companyUpdatesList.length && showLoadMore && (
-          <div className="load-more-container">
-            <button
-              className="load-more-btn"
-              onClick={() => {
-                const nextCount = visibleCompanyCount + 50;
-                if (nextCount < updatesData.companyUpdatesList.length) {
-                  setVisibleCompanyCount(nextCount);
-                  setShowLoadMore(false);
-                } else {
-                  setVisibleCompanyCount(updatesData.companyUpdatesList.length);
-                  setShowLoadMore(false);
-                }
-              }}
-            >
-              Load More Companies
-            </button>
-          </div>
-        )}
+        {showButton}
       </div>
     </div>
   );

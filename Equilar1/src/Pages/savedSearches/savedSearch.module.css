@@ -154,18 +154,20 @@
 }
 .company-name {
   color: #336699;
-  margin-top: 10px;
+  margin-top: 8px !important;
   font-size: 17px;
+  line-height: 17px;
   font-weight: 500;
   margin: 0 0 0 0;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
 
 .tags {
-  font-size: 13px;
+  font-size: 11px;
+  line-height: 12px;
   color: #6a6a6a;
   margin-bottom: 10px;
-  margin-top: 0px;
+  margin-top: 3px;
   font-family: url("./fonts/AvenirLTStd-lighter.otf");
 }
 
@@ -189,10 +191,11 @@
 /* === Employee Details === */
 .employee-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
-  margin-top: 14px;
-  margin-bottom: 24px;
+  margin-top: 13px;
+  margin-bottom: 41px;
+  height: 48px;
 }
 
 .profile-pic {
@@ -217,12 +220,13 @@
   height: 30px;
 }
 
-.emp-name {
+.empName {
   font-size: 15px;
+  line-height: 17px;
   font-weight: 400;
   color: #2D3E4F;
   display: flex;
-  align-items: center;
+  align-items: center !important;
   gap: 6px;
   font-family: url("./fonts/AvenirLTStd-Medium.otf");
 }
@@ -336,7 +340,7 @@
   font-size: 13px;
   color: #6A6A6A;
   margin-left: 27px !important;
-  margin-top: 20px! important;
+  margin-top: 12px! important;
   line-height: 17px;
 }
 .org-empcount{
@@ -344,7 +348,7 @@
   font-size: 13px;
   color: #6A6A6A;
   margin-left: 27px !important;
-  margin-top: 10px! important;
+  margin-top: 2px! important;
   line-height: 17px;
 
 }
