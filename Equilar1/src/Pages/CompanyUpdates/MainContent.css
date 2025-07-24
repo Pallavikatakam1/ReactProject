@@ -293,4 +293,16 @@
  text-emphasis-color: #0077b6;
 }
 
+.company-logo-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
 

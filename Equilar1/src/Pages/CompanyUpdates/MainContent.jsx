@@ -10,6 +10,7 @@ const MainContent = () => {
   const [updatesData, setUpdatesData] = useState({});
   const [visibleCompanyCount, setVisibleCompanyCount] = useState(50);
   const [showLoadMore, setShowLoadMore] = useState(false);
+  const [logoError, setLogoError] = useState({}); 
 
   useEffect(() => {
     fetch('/data.json')
@@ -32,6 +33,10 @@ const MainContent = () => {
     }
     const hue = Math.abs(hash) % 360;
     return `hsl(${hue}, 60%, 60%)`;
+  };
+
+  const handleLogoError = (companyName) => {
+    setLogoError(prev => ({ ...prev, [companyName]: true }));
   };
 
   const renderEmployee = (person) => (
@@ -70,8 +75,13 @@ const MainContent = () => {
       stockSold: '#007EFF',
     };
 
-    const logoElement = org.logo ? (
-      <img src={org.logo} alt={org.name} className="company-logo" />
+    const logoElement = !logoError[org.name] && org.logo ? (
+      <img
+        src={org.logo}
+        alt={org.name}
+        className="company-logo"
+        onError={() => handleLogoError(org.name)}
+      />
     ) : (
       <div className="company-logo-placeholder" style={{ backgroundColor: getColorFromName(org.name) }}>
         {getInitials(org.name)}
@@ -141,22 +151,17 @@ const MainContent = () => {
           </div>
         </div>
 
-        {/* <div className="company-count-debug">
-          Showing {Math.min(visibleCompanyCount, updatesData.companyUpdatesList.length)} of {updatesData.companyUpdatesList.length} companies
-        </div> */}
-
         <div className="content-row">
           <div className="all-updates-container">
             {updatesData.companyUpdatesList.slice(0, visibleCompanyCount).map((company, index) => (
               <div key={index}>
                 {renderCompany(company, index)}
-                {index < visibleCompanyCount - 1 && (
-                  <hr className="company-divider" />
-                )}
+                {index < visibleCompanyCount - 1 && <hr className="company-divider" />}
               </div>
             ))}
           </div>
         </div>
+
         {visibleCompanyCount < updatesData.companyUpdatesList.length && showLoadMore && (
           <div className="load-more-container">
             <button
