@@ -1,3 +1,4 @@
+/* Wrapper & Container */
 .main-wrapper {
   width: 948px;
   min-height: 100vh;
@@ -7,60 +8,60 @@
   margin-top: 0px;
   box-sizing: border-box;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  margin-left: 167px;
+  margin-left: 151px;
 }
 
 .main-container {
-  width: 100%;
+  width:948px;
   background-color: #fff;
   align-self: center;
-  margin-top: -427px;
+  margin-top: 23px;
+
 }
 
+/* Header Section */
 .header-row {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  height: 90px;
-  margin-bottom: 12px;
-  margin-left: 0px;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 8px;
 }
 
 .update-heading {
   font-size: 26px;
   font-weight: 400;
   color: #6A6A6A;
-  margin: 10px 0 0px 0px;
+  margin: 10px 0 0 0;
 }
 
 .date-download-row {
   display: flex;
   align-items: center;
-  margin-left: 0px;
-  margin-top: 0px;
-  gap: 14px;
-  color: #6A6A6A;
+  width: 948px;
+  gap: 25px;
   height: 25px;
+  color: #6A6A6A;
 }
 
 .date {
   font-size: 16px;
-  color: #6A6A6A;
   white-space: nowrap;
 }
 
 .divider {
-  width: 660px;
-  height: 0.7px;
+  flex: 1;
+  height: 0.8px;
   background-color: #D4D4D4;
-  margin: 0 10px;
+  margin: 0px;
+  width: 657px;
 }
 
 .download-btn {
-  color: #00b3ac;
+   color: #00b3ac;
   border: 1px solid #00b3ac;
   padding: 4px 14px;
   border-radius: 6px;
@@ -78,156 +79,190 @@
   width: 16px;
   height: 16px;
 }
-
 .download-img {
   width: 20px;
   height: 20px;
 }
 
+/* Main Content Area */
 .content-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 948px;
-  margin-left: 0px;
+  gap: 32px;
 }
 
 .all-updates-container {
+  flex: 3;
   background-color: #FFFFFF;
   border: 1px solid #D4D4D4;
-  width: 948px;
-  padding: 0px;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  width: 948px;
 }
 
+/* Company Card */
 .company-block {
   background: transparent;
   border-radius: 6px;
+
 }
 
 .company-header-section {
-  padding: 0px;
-  margin: 0px;
   width: 948px;
 }
 
 .company-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   height: 48px;
   width: 948px;
 }
-
 
 .company-logo {
   width: 32px;
   height: 32px;
-  flex-shrink: 0;
+  object-fit: contain;
+  margin-left: 16px;
 }
 
-.company-info {
+.company-logo-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+  text-transform: uppercase;
+  background-color: #aaa;
 }
 
-.company-name {
+
+
+.companyName {
   color: #336699;
   margin: 0;
   font-size: 17px;
+  line-height: 17px;
   font-weight: 500;
+  margin-top: 10px;
+  font-family:url("../../fonts/AvenirLTStd-Medium.otf") ;
 }
 
 .tags {
-  display: flex;
-  font-size: 13px;
-  color: #6a6a6a;
+  font-size: 11px;
+  color: #6A6A6A;
   margin: 0;
-}
-
-.event-block {
-  border-top: 1px dashed #ccc;
-  width: 948px;
-  padding-top: 0px;
-}
-
-.event-type-title {
-  font-weight: 600;
-  font-size: 17px;
-  padding-left: 16px;
+  line-height: 12px;
   margin-top: 3px;
   margin-bottom: 8px;
+  font-family:url("../../fonts/AvenirLTStd-Light.otf") ;
 }
 
-.employee-row {
+/* Funding Info Row */
+.funding-row {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.profile-pic {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 49px;
+  font-size: 14px;
+  font-weight: 600;
   margin-left: 32px;
 }
 
-.profile-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.funding-label{
+  margin-left: 32px;
+}
+.funding-amount {
+  font-weight: 600;
+  color: #139D6C;
+  font-size: 17px;
+  line-height: 17px !important;
+  font-family:url("../../fonts/AvenirLTStd-Light.otf") ;
+  font-weight: 600;
 }
 
-.name-date-row,
-.role-wealth-row {
+.funding-type {
+  color: #323232;
+  font-size: 17px;
+  line-height: 17px !important;
+  font-family:url("src/fonts/AvenirLTStd-Light.otf") ;
+  margin-left: 5px;
+}
+
+.announced-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 30px;
+  gap: 8px;
 }
 
-.emp-name {
-  font-size: 15px;
-  font-weight: 400;
-  color: #2D3E4F;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.update-date {
+.announced-date {
   font-size: 13px;
-  margin-right: 30px;
   color: #336699;
   white-space: nowrap;
+  margin-right: 24px;
+  font-family: url("../../fonts/AvenirLTStd-Light.otf");
 }
 
-.role {
+.source {
   font-size: 13px;
+  color: #888;
+}
+
+/* Investors Section */
+.investors-row {
+  margin: 12px 0 40px 32px;
+}
+
+.investors-label {
+  font-weight: 600;
+  margin-right: 6px;
+  display: inline;
+   font-size: 14px;
+  line-height: 17px;
   color: #6A6A6A;
+  font-family:url("../../fonts/AvenirLTStd-Medium.otf") ;
 }
 
-.wealth-value {
+.investors-list {
+  display: inline;
   font-size: 13px;
-  color: #008bb0;
-  white-space: nowrap;
-  margin-right: 30px;
-  margin-top: 3px;
+  color:#0E82C6;
+  font-family:url("../../fonts/AvenirLTStd-Light.otf");
+  line-height: 17px;
 }
 
-.badge {
-  background-color: #0077b6;
-  color: white;
-  font-size: 11px;
-  width: 23px;
-  height: 12px;
-  align-items: center;
+.investor-name {
+  display: inline;
+  margin-left: 2px;
+  font-weight: 400;
 }
 
+/* Divider */
 .company-divider {
   border: none;
+  border-top: 1px dashed #ccc;
+}
+
+.company-div{
+  border: none;
   border-top: 1px solid #ccc;
-  margin: 0;
+  width: 948px ;
+  margin: 0 0 0 0;
+
+}
+
+.companyDivider{
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 892px ;
+  margin-left: 33px;
+  margin-right: 25px;
 }

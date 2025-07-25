@@ -11,10 +11,10 @@ const pathMap = {
 };
 
 const tabs = [
-  { label: "Company Updates",         count: 15 },
-  { label: "My Territory",            count: 12 },
+  { label: "Company Updates",         count: 108 },
+  { label: "My Territory",            count: 1 },
   { label: "New PE/VC Financings",    count: 3  },
-  { label: "Saved Searches",          count: 7  }
+  { label: "Saved Searches",          count: 43  }
 ];
 
 const Navbar2 = () => {
