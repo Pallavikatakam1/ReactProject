@@ -1,3 +1,144 @@
+/* Responsive styles */
+@media (max-width: 900px) {
+  .main-wrapper {
+    width: 100vw;
+    margin-left: 0;
+    padding: 0 4vw;
+  }
+  .main-container {
+    width: 100%;
+    margin-top: 12px;
+  }
+  .header-row {
+    height: auto;
+    margin-bottom: 12px;
+    padding: 0 2vw;
+  }
+  .update-heading {
+    font-size: 20px;
+  }
+  .date-download-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+  .divider {
+    width: 100%;
+    min-width: 0;
+  }
+  .financings-list-container,
+  .content-row,
+  .all-updates-container {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .company-header {
+    width: 100%;
+    gap: 8px;
+  }
+  .company-logo, .company-logo-placeholder {
+    width: 28px;
+    height: 28px;
+    margin-left: 0;
+    font-size: 12px;
+  }
+  .company-info {
+    margin-left: 4px;
+  }
+  .companyName {
+    font-size: 15px;
+  }
+  .tags {
+    font-size: 11px;
+  }
+  .funding-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 8px 0 4px 0;
+    font-size: 13px;
+  }
+  .funding-left, .funding-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .funding-amount {
+    font-size: 15px;
+  }
+  .funding-type {
+    font-size: 13px;
+  }
+  .announced-date {
+    font-size: 12px;
+  }
+  .investors-row {
+    margin: 8px 0 10px 0;
+    font-size: 12px;
+  }
+  .investors-label {
+    font-size: 12px;
+  }
+  .investor-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-wrapper {
+    padding: 0 2vw;
+  }
+  .main-container {
+    margin-top: 4px;
+  }
+  .header-row {
+    padding: 0 1vw;
+  }
+  .update-heading {
+    font-size: 17px;
+  }
+  .date {
+    font-size: 13px;
+  }
+  .download-btn {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .excel-img {
+    width: 13px;
+    height: 13px;
+  }
+  .company-header {
+    gap: 4px;
+  }
+  .company-logo, .company-logo-placeholder {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+  .companyName {
+    font-size: 12px;
+  }
+  .tags {
+    font-size: 9px;
+  }
+  .funding-row {
+    font-size: 11px;
+  }
+  .funding-amount {
+    font-size: 12px;
+  }
+  .funding-type {
+    font-size: 11px;
+  }
+  .announced-date {
+    font-size: 10px;
+  }
+  .investors-row, .investors-label, .investor-name {
+    font-size: 10px;
+  }
+}
 /* Wrapper & Container */
 .main-wrapper {
   width: 948px;
