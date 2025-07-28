@@ -89,16 +89,22 @@ const NewFinancings = () => {
         <div className={styles["companyDivider"]} />
         <div className={styles["investors-row"]}>
           <p className={styles["investors-label"]}>
-            {investors.length > 1 ? 'INVESTORS:' : 'INVESTOR:'}
+            {investors.length > 1 ? 'INVESTORS / PARTNERS:' : 'INVESTOR:'}
           </p>
           <div className={styles["investors-list"]}>
             {investors.length > 0 ? (
-              investors.map((inv, idx) => (
-                <span key={inv.id} className={styles["investor-name"]}>
-                  {idx > 0 && ', '}
-                  {inv.orgName}
-                </span>
-              ))
+              investors.map((inv, idx) => {
+                let partners = '';
+                if (Array.isArray(inv.investmentPartners) && inv.investmentPartners.length > 0) {
+                  partners = ` (${inv.investmentPartners.map(p => p.personName).join(', ')})`;
+                }
+                return (
+                  <span key={inv.id} className={styles["investor-name"]}>
+                    {idx > 0 && ', '}
+                    {inv.orgName}{partners}
+                  </span>
+                );
+              })
             ) : (
               <span className={styles["investor-name"]} style={{ color: '#aaa' }}>None</span>
             )}
