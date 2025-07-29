@@ -69,7 +69,7 @@ const MyTerritory = () => {
               <p className={styles["tags"]}>· {org.listNames.join(' · ')}</p>
             </div>
           </div>
-        </div>
+        </div>  
         <div className={styles["employee-updates-section"]}>
           {Object.entries(events).map(([eventType, people]) => (
             <div key={eventType} className={styles["event-block"]}>

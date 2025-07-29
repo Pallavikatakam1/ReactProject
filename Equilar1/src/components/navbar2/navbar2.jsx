@@ -18,18 +18,17 @@ const tabs = [
 ];
 
 const Navbar2 = () => {
-  const pages = [tabs.slice(0, 2), 
-                 tabs.slice(2, 4)
-  ];
- const [pageIndex, setPageIndex] = useState(0);
+  const pages = [tabs.slice(0, 2), tabs.slice(2, 4)];
+  const [pageIndex, setPageIndex] = useState(0);
 
-  const handleLeft  = () => pageIndex > 0              && setPageIndex(p => p - 1);
-  const handleRight = () => pageIndex < pages.length-1 && setPageIndex(p => p + 1);
+  const handleLeft  = () => pageIndex > 0 && setPageIndex(p => p - 1);
+  const handleRight = () => pageIndex < pages.length - 1 && setPageIndex(p => p + 1);
+
   return (
     <div className="tab-nav">
       <div className="tab-list">
         <div
-          className={`left-arrow  ${pageIndex === 0 ? 'inactive' : 'active'}`}
+          className={`left-arrow ${pageIndex === 0 ? 'inactive' : 'active'}`}
           onClick={handleLeft}
         >
           <FaChevronLeft />
