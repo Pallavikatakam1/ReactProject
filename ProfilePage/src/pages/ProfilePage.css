@@ -12,8 +12,14 @@
 .main-wrapper {
   width: 100%;
   margin: 70px 0 0 0;
+  height: auto;
+
 }
 
+.topbar{
+  display: flex;
+  flex-direction: row;
+}
 .profile-container {
   width: 1184px;
   height: 394px;
@@ -52,6 +58,8 @@
   color:  #336699;
   font-weight: 600 !important;
   letter-spacing: 1px;
+  display: flex;
+  gap: 10px;
   font-family:'AvenirLTStd-Medium' ;
 }
 
@@ -125,31 +133,33 @@
 .bottom-div{
     width: 1130px;
     height: 192px;
-    background-color: rgb(236, 248, 252);
-    border: 1px solid lightblue;
-    /* margin-left: 26px; */
+    background-color: #F5FAFD;
+    border: 1px solid #D8EDF8;
+    margin-left: 26px;
     margin-top: 16px;
     border-radius: 4px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
 .head{
     justify-content: space-between;
     height: 50px;
+    width: 1080px;
+    display: flex;
+    border-bottom: 1px solid #D8EDF8;
+    margin-left: 25px;
+    align-items: center;
 }
 
 .left{
     display: flex;
     flex-direction: row;
-    margin-left: 30px;
     gap: 10px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .sparkle{
-    color:  rgb(183, 226, 233);
+    color:  #AED2D2;
     font-size: 20px;
 }
 
@@ -162,6 +172,12 @@
     margin: 0;
 }
 
+.beta{
+  height: 15px;
+  width: 40px;
+  margin-top: 3px;
+}
+
 .question{
     color:  #2B3D4F;
     font-size: 12px;
@@ -169,26 +185,325 @@
 }
 
 .right{
-    margin-left: 1064px;
-    margin-top: -25px;
+    margin-right: 0;
+    margin-top: 20px;
     font-size: 18px;
-    margin-right: 14px;
     width: auto;
-    color: grey;
+    color: #A5A5A5;
 }
 
 .thumbdown{
     margin-left: 10px;
 }
 
-.company-divider{
-    width: 1080px;
-    flex: 1;
-  height: 0.8px;
-  background-color: #D4D4D4;
-  width: 657px;
+.body{
+  font-family:'AvenirLTStd-Light' ;
+  width: 850px;
+  align-items: center;
+  margin-left: 25px;
+  font-weight: 600;
+}
+
+.text{
+  height: 100px;
+}
+.recent p{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 13px ;
+  color: #4B4B4C;
+}
+
+.line1 p{
+  margin-top: 0px;
+  font-size: 12px;
+  color: #636465;
+  margin-bottom: 0px;
+
+}
+
+.list{
+  font-size: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #636465;
 
 }
 
 
- 
+
+/*    */
+
+.tl-div{
+  height: 394px;
+  display: flex;
+  flex-direction: column;
+  width: 276px;
+  margin-left: 20px;
+  gap: 20px;
+}
+
+.notes{
+  height: 186px;
+  width: 276px;
+  border: 1px solid #E4E4E4;
+}
+
+.notestop{
+  width: 218px ;
+  height: 50px ;
+  border-bottom: 1px solid #E4E4E4;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  font-family: 'AvenirLTStd-Light';
+}
+
+.note-head {
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-family: 'AvenirLTStd-Medium';
+  color: #464E56;
+}
+
+.addbtn{
+  width: 56px;
+  height: 24px;
+  margin-top: 16px;
+  background-color: white;
+  border-radius: 4px;
+  color: #5DC9CD;
+  border-color: #5DC9CD;
+  border-bottom: 2px solid #5DC9CD;
+  border-right: 2px solid #5DC9CD;
+  align-items: center;
+  font-size: 11px;
+  display: flex;
+}
+
+.addsym{
+  font-size: 16px;
+  margin-right: 2px;
+  color: #5DC9CD;
+}
+
+.notesbottom{
+  display: flex;
+  flex-direction: row;
+  width: 218px;
+  margin-left: 30px;
+  gap: 10px;
+}
+
+.addlogo{
+  height: 40px;
+  width: 50px;
+  margin-top: 20px;
+}
+
+.lt-div{
+  height: 186px;
+  width: 276px;
+  border: 1px solid  #E4E4E4;
+}
+
+.savebtn{
+  height: 24px;
+  width: 86px;
+  margin-top: 16px;
+  background-color: white;
+  border-radius: 4px;
+  color: #5DC9CD;
+  border-color: #5DC9CD;
+  border-bottom: 2px solid #5DC9CD;
+  border-right: 2px solid #5DC9CD;
+  align-items: center;
+  font-size: 10px;
+  display: flex;
+}
+
+.savesym{
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.saveIcon{
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.note{
+  font-size: 12px;
+  font-family:'AvenirLTStd-Light';
+  color: #B7B7B7;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+
+.downdiv{
+  width: 1480px;
+  height: 212px;
+  border: 1px solid#E4E4E4;
+  margin-left: 16px;
+  margin-top: 20px;
+}
+
+.down-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1420px;
+  height: 50px;
+  border-bottom: 1px solid #E4E4E4;
+  margin-left: 30px;
+  font-family: 'AvenirLTStd-Light';
+}
+
+.down-header h5{
+  font-size: 12px;
+  color:#333C45 ;
+  font-weight: 600 !important;
+  letter-spacing: 1px;
+}
+
+.filter{
+  height: 24px;
+  width: 106px;
+  font-size: 10px;
+  font-weight: 800;
+  background-color: white;
+  border-radius: 4px;
+  color:#7A9BBC ;
+  border-left: 1px solid #7A9BBC;
+  border-bottom:1px solid #7A9BBC;
+  border-top: 1px solid #7A9BBC;
+  border-right: 1px solid #7A9BBC;
+  margin-top: 20px;
+  font-family:'AvenirLTStd-Light' ;
+}
+
+.listIcon{
+  height: 10px;
+  margin-right: 4px;
+  background-color: white;
+  color: #35679A;
+}
+
+.down-body{
+  display: flex;
+  flex-direction: column;
+  width: 1420px;
+  margin-left: 30px;
+  height: 166px;
+}
+
+.current {
+  font-size: 12px;
+  font-family:'AvenirLTStd-Light' ;
+  color:#333C45;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.companyProfile{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  gap: 10px;
+  font-family: 'AvenirLTStd-Light';
+}
+
+.comDetails{
+  margin-left: 10px;
+}
+.comName {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 600;
+  color: #333C45;
+}
+
+.comRole {
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #7496B9;
+}
+
+.period {
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 0px;
+  font-weight: 600;
+  color: #517DA8;
+}
+
+.date {
+  font-size: 10px;
+  margin-top: 4px;
+  font-weight: 600;
+  color: #517DA8;
+}
+
+.designer{
+  width: 20px;
+  background-color: white;
+  margin-right: 0px;
+}
+
+.linkedIn{
+  border-radius: 100%;
+  margin-left: 10px;
+  width: 20px;
+}
+
+.twitter{
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  width: 15px;
+}
+
+.comLogo{
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.feedback{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.feedbtn {
+  background-color: #336699; 
+  color: white;
+  border-color:#336699 ;
+  border-bottom: 1px solid #336699;
+  border-right: 1px solid #336699;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  width: 140px;
+  height: 30px;
+  font-family: 'AvenirLTStd-Medium';  
+  cursor: pointer;
+}
+
+.feedLogo{
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+}
+
+

@@ -7,17 +7,6 @@ import { HiSparkles } from "react-icons/hi2";
 import { FaCircleQuestion } from "react-icons/fa6";
 import { MdThumbUpOffAlt } from "react-icons/md";
 import { MdThumbDownOffAlt } from "react-icons/md";
-import { IoIosAdd } from "react-icons/io";
-import addNotes from "../assets/addNotesImage.svg";
-import saveIcon from "../assets/savelist.png";
-import { MdOutlinePlaylistAdd } from "react-icons/md";
-import listIcon from "../assets/list.svg";
-import beta from "../assets/beta.png";
-import { FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { SiAltiumdesigner } from "react-icons/si";
-import comLogo from "../assets/company-Logo.png";
-import feedLogo from "../assets/feedback.png"
 
 const ProfilePage = () => {
   const [profiles, setProfiles] = useState([]);
@@ -42,14 +31,7 @@ const ProfilePage = () => {
                  />
                 </div>
               <div className="details">
-                <div className="emp-name">{profile.fullName}
-                  <div className="logos">
-                    <SiAltiumdesigner className="designer" />
-                    <FaLinkedin className="linkedIn"/>
-                    <FaXTwitter className="twitter"/>
-                  </div>
-                </div>
-
+                <div className="emp-name">{profile.fullName}</div>
                 <div className="company-name">{profile.company}</div>
                 <div className="title">{profile.title}</div>
                 <div className="board">Public Boards ({profile.publicBoards})</div>
@@ -76,7 +58,6 @@ const ProfilePage = () => {
                    <div className="left">
                      <HiSparkles className='sparkle' />
                      <h4 className="heading">LATEST INSIGHTS </h4>
-                     <img src={beta} className="beta"/>
                      <FaCircleQuestion  className="question"/>
                    </div>
                 </div>
@@ -103,88 +84,20 @@ const ProfilePage = () => {
               </div>
            </div> 
         </div> 
-            ))}
+          
+           {/* <div className="tl-div">
+          //   <div className="notes">
 
+          //   </div>
+          //   <div  className="lt-div"></div>
+          //  </div> */}
 
-        <div className="tl-div">
-            <div className="notes">
-               <div className="notestop">
-                <h5 className="note-head">NOTES (0)</h5>
-                <button className="addbtn">
-                  <IoIosAdd className="addsym"/>
-                  Add
-                </button>
-               </div>
-               <div className="notesbottom">
-                <div className="noteslogo">
-                  <img src={addNotes}  className="addlogo"/>
-                </div>
-                <div className="note">
-                <p>Add a note for yourself or for
-                  someone else on your team.
-                </p>
-                </div>
-               </div>
-            </div>
-
-
-            <div  className="lt-div">
-              <div className="notestop">
-                <h5 className="note-head">LISTS</h5>
-                <button className="savebtn">
-                  <MdOutlinePlaylistAdd  className="savesym"/>
-                  Save to List
-                </button>
-               </div>
-               <div className="notesbottom">
-                <div className="noteslogo">
-                  <img src={saveIcon}  className="saveIcon"/>
-                </div>
-                <div className="note">
-                <p>
-                  Save to a list to stay orgaized
-                  and receive alerts.
-                </p>
-                </div>
-               </div>
-            </div>
-        </div> 
-
-       
+         ))}
       </div>
 
-      <div className="downdiv">
-        <div className="down-header">
-          <h5>EXPERIENCE</h5>
-          <button className="filter">
-            <img src={listIcon} className="listIcon" />
-            FILTER BY: Role
-          </button>
-        </div>
-        <div className="down-body">
-          <div className="current">
-            <p>Current (1)</p>
-          </div>
-          <div className="companyProfile">
-            <div className="comLogo">
-              <img src={comLogo} className="comLogo" />
-            </div>
-            <div className="comDetails">
-              <h6 className="comName">Pronto Bottle</h6>
-              <p className="comRole">Founder and CEO</p>
-              <p className="period">March 2019 - Present *</p>
-              <p className="date">* Last Confirmed 5/11/2022</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* <div className="bottombar">
 
-     <div className="feedback">
-      <button className="feedbtn">
-        <img src={feedLogo} className="feedLogo" />
-        Share Feedback
-      </button>
-     </div> 
+      </div> */}
 
           
     </div>
